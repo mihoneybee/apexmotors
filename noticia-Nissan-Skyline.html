@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="O retorno de uma lenda: Nissan antecipa o novo Skyline com foco em performance pura e DNA esportivo. Conheça os detalhes na ApexMotors.">
+    <title>Nissan Skyline: O Despertar da Lenda e o Retorno às Origens | ApexMotors</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* =========================================================
+           ESTILOS ESPECÍFICOS DA PÁGINA DE NOTÍCIA PREMIUM
+        ========================================================= */
+        .news-hero {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            min-height: 500px;
+            display: flex;
+            align-items: flex-end;
+            /* Fundo com imagem do conceito Nissan Skyline / GT-R */
+            background: linear-gradient(to top, #0B0B0B 0%, rgba(11, 11, 11, 0.4) 50%, rgba(11, 11, 11, 0.1) 100%), 
+                        url('/imagens/new-skyline-roadview.webp') center/cover no-repeat;
+            padding: 5vw;
+            margin-top: 90px;
+        }
+
+        .news-hero-content {
+            max-width: 900px;
+            animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .news-tag {
+            color: #E10600;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .news-hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #F5F5F5;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .news-hero p.subtitle {
+            font-size: 1.2rem;
+            color: #ddd;
+            font-weight: 300;
+            margin-bottom: 20px;
+            max-width: 800px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .news-meta {
+            font-size: 0.85rem;
+            color: #888;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .article-container {
+            max-width: 850px;
+            margin: 60px auto;
+            padding: 0 5vw;
+        }
+
+        .article-content p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .article-content p strong {
+            color: #fff;
+        }
+
+        .article-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+            margin: 50px 0 25px 0;
+            border-left: 4px solid #E10600;
+            padding-left: 15px;
+        }
+
+        .article-image-wrapper {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .article-image {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            transition: transform 0.5s ease;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .specs-table-wrapper {
+            overflow-x: auto;
+            margin: 40px 0;
+            border-radius: 8px;
+            background-color: #151515;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .specs-table th, .specs-table td {
+            padding: 18px 25px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .specs-table th {
+            color: #E10600;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .specs-table td {
+            color: #eee;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .video-section {
+            margin: 60px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin: 60px 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="logo">Apex<span>Motors</span></a>
+        </div>
+        <div class="navbar-center">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Categorias<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="supercars.html">Supercars</a></li>
+                        <li><a href="hypercars.html">Hypercars</a></li>
+                        <li><a href="luxury-cars.html">Luxury Cars</a></li>
+                        <li><a href="luxury-suvs.html">Luxury SUVs</a></li>
+                        <li><a href="grand-tourers.html">Grand Tourers (GT)</a></li>
+                        <li><a href="exclusive.html">Exclusive</a></li>
+                        <li><a href="limited-edition.html">Limited Edition</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Marcas<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="ferrari.html">Ferrari</a></li>
+                        <li><a href="lamborghini.html">Lamborghini</a></li>
+                        <li><a href="porsche.html">Porsche</a></li>
+                        <li><a href="koenigsegg.html">Koenigsegg</a></li>
+                        <li><a href="bugatti.html">Bugatti</a></li>
+                        <li><a href="mclaren.html">McLaren</a></li>
+                        <li><a href="rollsroyce.html">Rolls-Royce</a></li>
+                        <li><a href="pagani.html">Pagani</a></li>
+                    </ul>
+                </li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="quemnossomos.html">Quem somos</a></li>
+                <li><a href="noticias.html">Blog</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar veículo...">
+                <button type="button" aria-label="Buscar">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="news-hero">
+        <div class="news-hero-content">
+            <span class="news-tag">Exclusivo: Próxima Geração</span>
+            <h1>Nissan Skyline: A Ressurreição do Godzilla para o Futuro</h1>
+            <p class="subtitle">Após anos focado no mercado de luxo, a Nissan confirma que o lendário Skyline retornará às suas raízes de alta performance e inovação radical.</p>
+            <div class="news-meta">
+                REDAÇÃO POR <strong>ISABELLY MARTINS</strong> | ABRIL DE 2026
+            </div>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <article class="article-content">
+            
+            <p class="fade-in-scroll">
+                Para os puristas, o nome <strong>Skyline</strong> evoca imagens de domínio absoluto nas pistas e inovações que desafiaram a engenharia alemã por décadas. Após uma transição para o segmento de sedãs executivos, a Nissan finalmente ouviu os entusiastas e confirmou o desenvolvimento de uma nova geração que promete resgatar a crueza e o espírito indomável do modelo.
+            </p>
+
+            <h2 class="fade-in-scroll">Um Legado de Domínio</h2>
+            <p class="fade-in-scroll">
+                Nascido sob a bandeira da Prince Motor Company antes de se tornar o porta-estandarte da Nissan, o Skyline moldou a cultura automotiva mundial. Do icônico "Hakosuka" dos anos 70 ao domínio tecnológico do R32 e o fetiche visual do R34, a sigla sempre representou o ápice do que o Japão pode oferecer em termos de tração integral e motores superalimentados.
+            </p>
+
+            <div class="article-image-wrapper fade-in-scroll">
+                <img src="/imagens/new-skyline-sideview.webp" alt="Nissan Skyline em ambiente urbano futurista" class="article-image" loading="lazy">
+                <p class="image-caption">O novo conceito visual une as linhas clássicas do R34 com a aerodinâmica agressiva dos hypercars modernos.</p>
+            </div>
+
+            <h2 class="fade-in-scroll">A Revolução Mecânica</h2>
+            <p class="fade-in-scroll">
+                As notícias antecipadas pela Nissan indicam que o novo Skyline não será apenas um exercício de nostalgia. A marca aposta em uma plataforma híbrida de ultra-performance, capaz de entregar torque instantâneo através de motores elétricos, enquanto mantém a alma de um motor a combustão de alta rotação.
+            </p>
+            <p class="fade-in-scroll">
+                O foco principal será a nova evolução do sistema de tração integral <strong>ATTESA E-TS</strong>, agora integrado a um sistema vetorial eletrônico que promete níveis de aderência nunca antes vistos em um carro de produção em massa.
+            </p>
+
+            <h2 class="fade-in-scroll">Especificações Antecipadas</h2>
+            <div class="specs-table-wrapper fade-in-scroll">
+                <table class="specs-table">
+                    <tbody>
+                        <tr>
+                            <th>Trem de Força</th>
+                            <td>Híbrido E-Power de Alto Desempenho</td>
+                        </tr>
+                        <tr>
+                            <th>Motorização</th>
+                            <td>V6 3.0L Twin-Turbo + Motores Elétricos Dual</td>
+                        </tr>
+                        <tr>
+                            <th>Potência Estimada</th>
+                            <td>+580 cv</td>
+                        </tr>
+                        <tr>
+                            <th>Tração</th>
+                            <td>e-4ORCE AWD (Evolução do ATTESA)</td>
+                        </tr>
+                        <tr>
+                            <th>Aceleração 0-100 km/h</th>
+                            <td>Projetado em menos de 3.2s</td>
+                        </tr>
+                        <tr>
+                            <th>Tecnologia de Chassis</th>
+                            <td>Suspensão Ativa com leitura de asfalto via AI</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="fade-in-scroll">Design e Proposta</h2>
+            <p class="fade-in-scroll">
+                A nova linguagem visual, inspirada no conceito Hyper Force, traz de volta as lanternas circulares quádruplas — a assinatura inconfundível do Skyline. O interior será um cockpit digital focado no motorista, utilizando tecnologia de realidade aumentada para exibir tempos de volta e telemetria diretamente no para-brisa.
+            </p>
+
+            <div class="video-section fade-in-scroll">
+                <h2>O DNA da Nissan em Movimento</h2>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/xSXAqIkTDZI?rel=0" title="Nissan Technology Showreel" allowfullscreen></iframe>
+                </div>
+                <p class="image-caption">Veja como a Nissan está redefinindo a performance elétrica para a nova era do Skyline.</p>
+            </div>
+
+            <h2 class="fade-in-scroll">Conclusão ApexMotors</h2>
+            <p class="fade-in-scroll">
+                O retorno do Skyline às suas origens esportivas marca um momento crucial para a Nissan. Ao unir sua herança lendária com a vanguarda da eletrificação, a marca não está apenas lançando um carro, mas reafirmando seu lugar no topo do panteão automotivo. Na ApexMotors, estamos ansiosos para ver esta máquina dominar as estradas novamente.
+            </p>
+
+            <div class="cta-container fade-in-scroll">
+                <h3 style="color: #fff; margin-bottom: 10px;">Interessado em JDM de Alta Performance?</h3>
+                <p style="font-size: 0.95rem; margin-bottom: 25px;">Receba atualizações exclusivas sobre o lançamento do novo Skyline e outros modelos icônicos.</p>
+                <a href="exclusive.html" class="btn" style="background-color: #E10600; color: #fff; padding: 12px 30px; text-decoration: none; font-family: 'Orbitron';">Ver Modelos Exclusivos</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <a href="index.html#home" class="logo">Apex<span>Motors</span></a>
+        <p>© 2026 Apex Motors. A excelência automotiva reimaginada.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll('.fade-in-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rolls-Royce Collection na ApexMotors. O expoente máximo do luxo automotivo: Phantom, Ghost, Cullinan e o totalmente elétrico Spectre.">
+    <title>Rolls-Royce Collection | ApexMotors</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .category-section {
+            padding: 60px 5vw;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .category-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* GRID DEFINITIVO: Proporção 100% fiel ao padrão do site */
+        .centered-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .centered-grid .card {
+            flex: 1 1 calc(33.333% - 20px);
+            max-width: calc(33.333% - 20px);
+            min-width: 320px;
+        }
+
+        @media (max-width: 1024px) {
+            .centered-grid .card {
+                flex: 1 1 calc(50% - 15px);
+                max-width: calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .centered-grid .card { 
+                flex: 1 1 100%;
+                max-width: 100%; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="logo">Apex<span>Motors</span></a>
+        </div>
+        <div class="navbar-center">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Categorias<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="supercars.html">Supercars</a></li>
+                        <li><a href="hypercars.html">Hypercars</a></li>
+                        <li><a href="luxury-cars.html">Luxury Cars</a></li>
+                        <li><a href="luxury-suvs.html">Luxury SUVs</a></li>
+                        <li><a href="grand-tourers.html">Grand Tourers (GT)</a></li>
+                        <li><a href="exclusive.html">Exclusive</a></li>
+                        <li><a href="limited-edition.html">Limited Edition</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Marcas<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="ferrari.html">Ferrari</a></li>
+                        <li><a href="lamborghini.html">Lamborghini</a></li>
+                        <li><a href="porsche.html">Porsche</a></li>
+                        <li><a href="koenigsegg.html">Koenigsegg</a></li>
+                        <li><a href="bugatti.html">Bugatti</a></li>
+                        <li><a href="mclaren.html">McLaren</a></li>
+                        <li><a href="rollsroyce.html">Rolls-Royce</a></li>
+                        <li><a href="pagani.html">Pagani</a></li>
+                    </ul>
+                </li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="quemnossomos.html">Quem somos</a></li>
+                <li><a href="noticias.html">Blog</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar veículo...">
+                <button type="button" aria-label="Buscar">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="about-hero" style="background-image: linear-gradient(rgba(11, 11, 11, 0.7), rgba(11, 11, 11, 0.95)), url('/imagens/f8tributotraseira.webp');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="category-subtitle">Marcas Exclusivas</span>
+            <h1 class="hero-title"><span>Rolls-Royce</span> <br>Collection</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="category-section">
+            <div class="section-header animate-on-scroll">
+                <h2 class="category-title">Ultra-Luxury Sedans</h2>
+            </div>
+            <div class="centered-grid">
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1631214548235-96879207e33f?auto=format&fit=crop&w=800&q=80" alt="Rolls-Royce Phantom VIII" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Rolls-Royce Phantom VIII</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Rolls-Royce Phantom VIII')">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Rolls-Royce Ghost" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Rolls-Royce Ghost</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Rolls-Royce Ghost')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-section" style="margin-bottom: 40px;">
+            <div class="section-header animate-on-scroll">
+                <h2 class="category-title">Bespoke & Electric</h2>
+            </div>
+            <div class="centered-grid">
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1631214524020-5e1841267c3f?auto=format&fit=crop&w=800&q=80" alt="Rolls-Royce Cullinan" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Rolls-Royce Cullinan</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Rolls-Royce Cullinan')">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Rolls-Royce Spectre" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Rolls-Royce Spectre</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Rolls-Royce Spectre')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="carModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h2 id="modalTitle" class="category-title" style="font-size: 2rem; margin-bottom: 20px;"></h2>
+            <p style="margin-bottom: 30px; color: var(--text-color); font-weight: 300;">
+                O auge absoluto do luxo artesanal. Desfrute da inigualável sensação "Magic Carpet Ride", um silêncio interior absoluto e personalização Bespoke ilimitada. Contacte-nos para uma experiência de aquisição exclusiva.
+            </p>
+            <button class="btn">Solicitar Atendimento VIP</button>
+        </div>
+    </div>
+
+    <footer>
+        <a href="index.html#home" class="logo">Apex<span>Motors</span></a>
+        <p>© 2026 Apex Motors. A excelência automotiva reimaginada.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

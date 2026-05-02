@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem Somos | ApexMotors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Espaçamento visual entre os parágrafos da história */
+        .about-text p {
+            margin-bottom: 1.8rem;
+            line-height: 1.8;
+            color: #d1d1d1;
+        }
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Estilos da Seção de Métricas */
+        .metrics-section {
+            background-color: #0B0B0B;
+            padding: 5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+        .metric-card {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            transition: transform 0.4s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-8px);
+        }
+        .metric-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem; /* Ajustado levemente para caber melhor em telas menores */
+            font-weight: 700;
+            color: #E10600;
+            margin-bottom: 0.8rem;
+            white-space: nowrap; /* GARANTE QUE FIQUEM NA MESMA LINHA */
+        }
+        .metric-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #F5F5F5;
+            text-transform: uppercase;
+        }
+        .metric-sublabel {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            margin-top: 0.6rem;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+        
+        @media (max-width: 992px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .metric-number { font-size: 2.5rem; }
+        }
+        @media (max-width: 576px) {
+            .metrics-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="logo">Apex<span>Motors</span></a>
+        </div>
+        <div class="navbar-center">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Categorias<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="supercars.html">Supercars</a></li>
+                        <li><a href="hypercars.html">Hypercars</a></li>
+                        <li><a href="luxury-cars.html">Luxury Cars</a></li>
+                        <li><a href="luxury-suvs.html">Luxury SUVs</a></li>
+                        <li><a href="grand-tourers.html">Grand Tourers (GT)</a></li>
+                        <li><a href="exclusive.html">Exclusive</a></li>
+                        <li><a href="limited-edition.html">Limited Edition</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Marcas<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="ferrari.html">Ferrari</a></li>
+                        <li><a href="lamborghini.html">Lamborghini</a></li>
+                        <li><a href="porsche.html">Porsche</a></li>
+                        <li><a href="koenigsegg.html">Koenigsegg</a></li>
+                        <li><a href="bugatti.html">Bugatti</a></li>
+                        <li><a href="mclaren.html">McLaren</a></li>
+                        <li><a href="rollsroyce.html">Rolls-Royce</a></li>
+                        <li><a href="pagani.html">Pagani</a></li>
+                    </ul>
+                </li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="quemnossomos.html">Quem somos</a></li>
+                <li><a href="noticias.html">Blog</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar veículo...">
+                <button type="button" aria-label="Buscar">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    <header class="about-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content animate-on-scroll">
+            <span class="category-subtitle">Nossa História</span>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 class="hero-title">Excelência em máquinas <br><span>extraordinárias</span></h1>
+        </div>
+    </header>
+
+    <section class="metrics-section section-padding">
+            <div class="container text-center">
+                <h2 class="section-title animate-on-scroll">Excelência em Números</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card animate-on-scroll">
+                        <div class="metric-number">1500+</div>
+                        <p class="metric-label">Carros Vendidos</p>
+                    </div>
+                    <div class="metric-card animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="metric-number">25 Anos</div>
+                        <p class="metric-label">De Mercado</p>
+                    </div>
+                    <div class="metric-card animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="metric-number">4.8</div>
+                        <p class="metric-label">Avaliação dos Clientes</p>
+                    </div>
+                    <div class="metric-card animate-on-scroll" style="transition-delay: 0.3s;">
+                        <div class="metric-number">24/7</div>
+                        <p class="metric-label">Concierge</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <main>
+        <section class="about-intro section-padding">
+            <div class="container grid-two-cols">
+                <div class="about-text animate-on-scroll">
+                    <h2 class="section-title">A ApexMotors</h2>
+                    
+                    <p>Fundada sob o pilar da exclusividade, a ApexMotors não é apenas uma concessionária, mas um destino para entusiastas que buscam o ápice da engenharia automotiva. Nossa curadoria seleciona apenas exemplares que definem eras, desde o ronco visceral dos V12 italianos até a precisão cirúrgica dos hipercarros modernos.</p>
+
+                    <p>Nossa história, no entanto, começa muito antes da consolidação da marca. Desde 1991, atuamos no mercado de importação de veículos, construindo uma base sólida de conhecimento, conexões internacionais e confiança no segmento automotivo de alto padrão.</p>
+
+                    <p>Foram anos dedicados a entender não apenas máquinas, mas o perfil de clientes que enxergam o automóvel como arte, investimento e legado.</p>
+
+                    <p>Em 2001, nasce oficialmente a ApexMotors — resultado de uma visão clara: transformar a importação de veículos de luxo em uma experiência exclusiva, segura e altamente personalizada. Desde então, nos posicionamos como uma ponte entre os maiores fabricantes do mundo e uma clientela extremamente exigente.</p>
+
+                    <p>Localizada no coração do mercado premium, oferecemos uma experiência de aquisição consultiva, onde cada detalhe é planejado para satisfazer colecionadores e entusiastas. Mais do que vender carros, entregamos histórias, sensações e conquistas.</p>
+
+                    <p>Cada veículo em nosso portfólio carrega mais do que números e especificações — carrega significado. E é exatamente isso que buscamos entregar: o extraordinário.</p>
+                </div>
+                <div class="about-image animate-on-scroll">
+                    <img src="/imagens/showroom.png" alt="Showroom ApexMotors" class="img-premium">
+                </div>
+            </div>
+        </section>
+
+        <section class="mvv-section section-padding">
+            <div class="container grid-three-cols">
+                <div class="mvv-card animate-on-scroll">
+                    <div class="mvv-icon"></div>
+                    <h3>Missão</h3>
+                    <p>Oferecer veículos de alto padrão com excelência absoluta, transformando o sonho da alta performance em uma realidade tangível e segura.</p>
+                </div>
+                <div class="mvv-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="mvv-icon"></div>
+                    <h3>Visão</h3>
+                    <p>Ser a maior referência global em curadoria e venda de carros de luxo, reconhecida pela integridade e paixão automotiva.</p>
+                </div>
+                <div class="mvv-card animate-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="mvv-icon"></div>
+                    <h3>Valores</h3>
+                    <p>Qualidade inquestionável, confiança mútua, exclusividade em cada atendimento e inovação constante nos serviços.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="diferenciais section-padding" style="background: #050505;">
+            <div class="container text-center">
+                <h2 class="section-title animate-on-scroll">Por que ApexMotors?</h2>
+                <div class="grid-four-cols">
+                    <div class="dif-item animate-on-scroll">
+                        <span class="dif-number">01</span>
+                        <h4>Curadoria Elite</h4>
+                        <p>Apenas carros com histórico impecável e baixa quilometragem.</p>
+                    </div>
+                    <div class="dif-item animate-on-scroll">
+                        <span class="dif-number">02</span>
+                        <h4>Inspeção 360° Elite</h4>
+                        <p>Análise técnica rigorosa e certificação de procedência em cada máquina do nosso portfólio.</p>
+                    </div>
+                    <div class="dif-item animate-on-scroll">
+                        <span class="dif-number">03</span>
+                        <h4>Private Room</h4>
+                        <p>Showroom privado para negociações com total discrição.</p>
+                    </div>
+                    <div class="dif-item animate-on-scroll">
+                        <span class="dif-number">04</span>
+                        <h4>Parcerias</h4>
+                        <p>Conexão direta com as fábricas em Maranello, Stuttgart e Molsheim.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="index.html" class="logo">Apex<span>Motors</span></a>
+        <p>© 2026 Apex Motors. A excelência automotiva reimaginada.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
