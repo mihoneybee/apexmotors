@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Serviços Exclusivos ApexMotors. Excelência em revisão, blindagem, personalização e estética automotiva para veículos de luxo e alta performance.">
+    <title>Serviços Exclusivos | ApexMotors</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Deslize suave ao clicar nas âncoras */
+        html { scroll-behavior: smooth; }
+
+        /* =========================================================
+           ESTILOS BASE E HERO
+        ========================================================= */
+        .services-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(11, 11, 11, 0.7), rgba(11, 11, 11, 0.95)), 
+                        url('/imagens/wallpaper-serviços.webp') center/cover no-repeat;
+            border-bottom: 1px solid rgba(225, 6, 0, 0.2);
+            position: relative;
+        }
+
+        .services-hero .hero-content { position: relative; z-index: 2; }
+        .services-hero .category-subtitle { color: #E10600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 15px; }
+        .services-hero .hero-title { color: #F5F5F5; font-size: 3.5rem; line-height: 1.1; }
+        .services-hero .hero-title span { color: #E10600; }
+
+        /* =========================================================
+           GRID DE SERVIÇOS
+        ========================================================= */
+        .services-section { padding: 80px 5vw; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header p { color: #A0A0A0; font-size: 1.1rem; margin-top: 15px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .centered-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px 30px; width: 100%; }
+        .centered-grid .card { flex: 1 1 calc(33.333% - 20px); max-width: calc(33.333% - 20px); min-width: 320px; background-color: #111; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; }
+        .centered-grid .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(225, 6, 0, 0.15); border-color: rgba(225, 6, 0, 0.3); }
+
+        .card-img-container { width: 100%; height: 220px; overflow: hidden; }
+        .card-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .centered-grid .card:hover .card-img-container img { transform: scale(1.08); }
+        .card-content { padding: 30px 20px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-content h3 { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #F5F5F5; margin-bottom: 15px; }
+        .card-content p { color: #A0A0A0; font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; flex-grow: 1;}
+
+        .btn-service { align-self: center; display: inline-block; background: transparent; color: #E10600; border: 1px solid #E10600; padding: 10px 25px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; text-decoration: none; border-radius: 4px; }
+        .btn-service:hover { background: #E10600; color: #fff; box-shadow: 0 0 15px rgba(225, 6, 0, 0.4); }
+
+        /* =========================================================
+           FORMULÁRIO DE CONTATO
+        ========================================================= */
+        .contact-form-section { background-color: #0B0B0B; padding: 80px 5vw; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .form-container { max-width: 850px; margin: 0 auto; background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.9)); padding: 50px; border-radius: 12px; border: 1px solid rgba(225, 6, 0, 0.1); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); }
+        .form-container h2 { font-family: 'Orbitron', sans-serif; text-align: center; font-size: 2.2rem; margin-bottom: 10px; color: #F5F5F5; }
+        .form-container h2 span { color: #E10600; }
+        .form-subtitle { text-align: center; color: #A0A0A0; font-family: 'Montserrat', sans-serif; margin-bottom: 40px; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .form-group { display: flex; flex-direction: column; }
+        .full-width { grid-column: span 2; }
+        .form-group label { font-family: 'Montserrat', sans-serif; color: #F5F5F5; font-size: 0.85rem; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .form-group input, .form-group select, .form-group textarea { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px; color: #F5F5F5; font-family: 'Montserrat', sans-serif; border-radius: 6px; transition: all 0.3s ease; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #E10600; background: rgba(225, 6, 0, 0.02); box-shadow: 0 0 10px rgba(225, 6, 0, 0.2); }
+        
+        .form-group select option { background-color: #0B0B0B; color: #F5F5F5; }
+
+        .btn-submit { grid-column: span 2; width: 100%; padding: 18px; background-color: #E10600; color: #FFF; border: none; font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; border-radius: 6px; transition: all 0.4s ease; margin-top: 10px; }
+        .btn-submit:hover { background-color: #b30500; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(225, 6, 0, 0.4); }
+
+        /* =========================================================
+           OVERLAY DE CONFIRMAÇÃO
+        ========================================================= */
+        .overlay-success {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .overlay-success.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay-box {
+            background: #0B0B0B;
+            border: 1px solid #E10600;
+            padding: 50px 40px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            transform: scale(0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .overlay-success.active .overlay-box {
+            transform: scale(1);
+        }
+
+        .overlay-icon { font-size: 3rem; color: #E10600; margin-bottom: 20px; display: block; }
+        .overlay-title { font-family: 'Orbitron', sans-serif; color: #F5F5F5; font-size: 1.5rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .overlay-text { font-family: 'Montserrat', sans-serif; color: #A0A0A0; line-height: 1.6; margin-bottom: 30px; }
+
+        .btn-close-overlay { background: #E10600; color: #FFF; border: none; padding: 12px 40px; font-family: 'Orbitron', sans-serif; font-weight: 700; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: all 0.3s ease; }
+        .btn-close-overlay:hover { background: #b30500; box-shadow: 0 5px 15px rgba(225, 6, 0, 0.4); }
+
+        /* Responsividade */
+        @media (max-width: 1024px) { .centered-grid .card { flex: 1 1 calc(50% - 15px); max-width: calc(50% - 15px); } }
+        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .full-width, .btn-submit { grid-column: span 1; } .services-hero .hero-title { font-size: 2.5rem; } .centered-grid .card { flex: 1 1 100%; max-width: 100%; } .form-container { padding: 30px 20px; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="logo">Apex<span>Motors</span></a>
+        </div>
+        <div class="navbar-center">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Categorias<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="supercars.html">Supercars</a></li>
+                        <li><a href="hypercars.html">Hypercars</a></li>
+                        <li><a href="luxury-cars.html">Luxury Cars</a></li>
+                        <li><a href="luxury-suvs.html">Luxury SUVs</a></li>
+                        <li><a href="grand-tourers.html">Grand Tourers (GT)</a></li>
+                        <li><a href="exclusive.html">Exclusive</a></li>
+                        <li><a href="limited-edition.html">Limited Edition</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Marcas<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="ferrari.html">Ferrari</a></li>
+                        <li><a href="lamborghini.html">Lamborghini</a></li>
+                        <li><a href="porsche.html">Porsche</a></li>
+                        <li><a href="koenigsegg.html">Koenigsegg</a></li>
+                        <li><a href="bugatti.html">Bugatti</a></li>
+                        <li><a href="mclaren.html">McLaren</a></li>
+                        <li><a href="rollsroyce.html">Rolls-Royce</a></li>
+                        <li><a href="pagani.html">Pagani</a></li>
+                    </ul>
+                </li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="quemnossomos.html">Quem somos</a></li>
+                <li><a href="noticias.html">Blog</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar veículo...">
+                <button type="button" aria-label="Buscar">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="services-hero">
+        <div class="hero-content">
+            <span class="category-subtitle">Nossos Serviços</span>
+            <br>
+            <br>
+            <br>
+            <h1 class="hero-title">Cuidado e <br><span>Performance</span></h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="services-section">
+            <div class="section-header animate-on-scroll">
+                <h2 style="font-size: 2.5rem; font-family: 'Orbitron', sans-serif; color: #F5F5F5;">Excelência Absoluta</h2>
+                <p style="color: #E10600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;">
+                    Ecossistema completo de serviços premium para seu veículo de alta performance.
+                </p>
+                <p style="max-width: 800px; margin: 0 auto; line-height: 1.8; color: #A0A0A0; font-size: 1.05rem;">
+                    Na ApexMotors, a excelência é inegociável.Entendemos que um veículo de elite é uma verdadeira obra-prima da engenharia. Por isso, nosso compromisso com a excelência absoluta não é apenas um padrão, é a nossa filosofia. Cada serviço é meticulosamente executado para preservar a autenticidade, elevar o desempenho e proteger o seu patrimônio. Cuidar da sua máquina é garantir que o extraordinário permaneça impecável.
+                </p>
+            </div>
+            
+            <div class="centered-grid">
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="/imagens/mecanico-serviços.jpg" alt="Revisão Premium" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Revisão Premium</h3>
+                        <p>Manutenção preventiva e corretiva utilizando exclusivamente peças originais, realizada por técnicos certificados nas fábricas europeias.</p>
+                        <a href="#contact-form-section" class="btn-service">Agendar</a>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="/imagens/pintando-serviços.jpg" alt="Pintura Personalizada" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Pintura Personalizada</h3>
+                        <p>Cores sob medida, acabamentos em matte, perolizado e metálico. Proteção avançada com PPF (Paint Protection Film) de alta durabilidade.</p>
+                        <a href="#contact-form-section" class="btn-service">Consultar</a>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="/imagens/blidagem-serviços.webp" alt="Blindagem de Alto Nível" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Blindagem de Alto Nível</h3>
+                        <p>Proteção balística de nível máximo com materiais ultraleves, garantindo segurança total sem comprometer a dinâmica ou o design do veículo.</p>
+                        <a href="#contact-form-section" class="btn-service">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Rastreamento Avançado" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Rastreamento Avançado</h3>
+                        <p>Monitoramento 24h via satélite, telemetria em tempo real, bloqueio remoto e concierge de segurança à sua disposição em qualquer lugar.</p>
+                        <a href="#contact-form-section" class="btn-service">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="/imagens/interior-serviços.jpg" alt="Personalização Interna" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Interior Sob Medida</h3>
+                        <p>Revestimentos em couro premium, Alcantara, fibra de carbono exposta e costuras feitas à mão para um habitáculo perfeitamente exclusivo.</p>
+                        <a href="#contact-form-section" class="btn-service">Personalizar</a>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="/imagens/remap-serviços.png" alt="Upgrade de Performance" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Upgrade de Performance</h3>
+                        <p>Remapeamento de ECU, instalação de sistemas de exaustão em titânio e aprimoramentos aerodinâmicos para maximizar a adrenalina nas pistas.</p>
+                        <a href="#contact-form-section" class="btn-service">Saiba Mais</a>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="/imagens/polimento -serviços.webp" alt="Detalhamento Automotivo" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Detailing (Estética)</h3>
+                        <p>Polimento técnico multinível, vitrificação de pintura com nano-tecnologia e higienização profunda para um brilho de showroom permanente.</p>
+                        <a href="#contact-form-section" class="btn-service">Agendar</a>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="/imagens/transporte-serviços.png" alt="Transporte Especializado" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Transporte Especializado</h3>
+                        <p>Logística altamente sigilosa e segura em caminhões plataforma fechados. Entregamos seu veículo na porta da sua casa, em todo o país.</p>
+                        <a href="#contact-form-section" class="btn-service">Cotar Transporte</a>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="/imagens/consultoria-serviços.avif" alt="Consultoria de Aquisição" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Consultoria de Aquisição</h3>
+                        <p>Assessoria completa e discreta para busca, negociação e importação de edições limitadas e hypercars exclusivos globalmente.</p>
+                        <a href="#contact-form-section" class="btn-service">Consultar</a>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80" alt="Garantia Estendida Premium" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Garantia Estendida</h3>
+                        <p>Planos de cobertura abrangentes que garantem tranquilidade absoluta após o período de fábrica, cobrindo componentes vitais do motor e eletrônica.</p>
+                        <a href="#contact-form-section" class="btn-service">Ver Planos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-form-section animate-on-scroll" id="contact-form-section">
+            <div class="form-container">
+                <h2>Agende seu <span>Atendimento</span></h2>
+                <p class="form-subtitle">Nossa equipa de especialistas entrará em contacto consigo em breve.</p>
+                
+                <form id="contact-form-apex">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Ex: Enzo Ferrari" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail Corporativo ou Pessoal</label>
+                            <input type="email" id="email" name="email" placeholder="contato@exemplo.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefone / WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="service">Serviço de Interesse</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione a especialidade</option>
+                                <option value="revisao">Revisão Premium V12/V10/V8</option>
+                                <option value="blindagem">Blindagem Nível III-A Apex</option>
+                                <option value="detailing">Estética e Proteção Cerâmica</option>
+                                <option value="personalizacao">Personalização Bespoke</option>
+                                <option value="importacao">Consultoria de Importação Direta</option>
+                                <option value="outro">Outros Serviços</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="message">Detalhes da Solicitação</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Descreva brevemente como podemos elevar a sua experiência automóvel..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Entrar em contacto</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div class="overlay-success" id="overlay-success-apex">
+        <div class="overlay-box">
+            <span class="overlay-icon">✓</span>
+            <h3 class="overlay-title">Solicitação enviada com sucesso</h3>
+            <p class="overlay-text">A nossa equipa entrará em contacto em breve para dar seguimento ao seu atendimento.</p>
+            <button class="btn-close-overlay" id="btn-close-overlay-apex">Fechar</button>
+        </div>
+    </div>
+
+    <footer>
+        <a href="index.html" class="logo">Apex<span>Motors</span></a>
+        <p>© 2026 Apex Motors. A excelência automotiva reimaginada.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const localForm = document.getElementById('contact-form-apex');
+            const localOverlay = document.getElementById('overlay-success-apex');
+            const localBtnClose = document.getElementById('btn-close-overlay-apex');
+
+            if (localForm && localOverlay && localBtnClose) {
+                function closeOverlay() {
+                    localOverlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+
+                localForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); 
+                    
+                    localOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    localForm.reset();
+                });
+
+                localBtnClose.addEventListener('click', closeOverlay);
+
+                localOverlay.addEventListener('click', function(e) {
+                    if (e.target === localOverlay) {
+                        closeOverlay();
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
