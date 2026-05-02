@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexMotors | Exclusividade em Alta Performance</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* =========================================================
+           ESTILOS DA SEÇÃO DE BENEFÍCIOS
+        ========================================================= */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .benefit-card {
+            background-color: #111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(225, 6, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(225, 6, 0, 0.1);
+        }
+
+        .benefit-icon {
+            color: #E10600;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .benefit-icon svg { width: 32px; height: 32px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .benefit-info h4 { font-family: 'Orbitron', sans-serif; color: #F5F5F5; font-size: 0.95rem; margin-bottom: 8px; line-height: 1.3; }
+        .benefit-info p { font-family: 'Montserrat', sans-serif; color: #A0A0A0; font-size: 0.85rem; line-height: 1.5; }
+
+        @media (max-width: 1024px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+
+        /* =========================================================
+           ESTILOS DA SEÇÃO DE DEPOIMENTOS (CARROSSEL)
+        ========================================================= */
+        .testimonials-section {
+            padding: 80px 5vw;
+            text-align: center;
+        }
+
+        .testimonials-header {
+            margin-bottom: 40px;
+        }
+
+        .testimonials-header .subtitle {
+            color: #E10600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .testimonials-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #F5F5F5;
+            margin-bottom: 15px;
+        }
+
+        .testimonials-header .rating-summary {
+            color: #A0A0A0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .testimonials-header .stars-summary {
+            color: #FFD700;
+            letter-spacing: 2px;
+            margin-right: 5px;
+        }
+
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 60px; 
+        }
+
+        .carousel-btn {
+            background: rgba(11, 11, 11, 0.9);
+            border: 1px solid #E10600;
+            color: #E10600;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: absolute;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-btn:hover {
+            background: #E10600;
+            color: #FFF;
+            transform: scale(1.1);
+        }
+
+        .prev-btn { left: 5px; }
+        .next-btn { right: 5px; }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 10px 0 20px 0;
+            scrollbar-width: none;
+            width: 100%;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .review-card {
+            flex: 0 0 calc(33.333% - 13.5px);
+            background-color: #111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            text-align: left;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(225, 6, 0, 0.3);
+        }
+
+        .review-img-container {
+            width: 100%;
+            height: 240px; 
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .review-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .review-card:hover .review-img-container img {
+            transform: scale(1.05);
+        }
+
+        .review-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .review-stars {
+            color: #FFD700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-family: 'Montserrat', sans-serif;
+            color: #F5F5F5;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .client-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .client-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #F5F5F5;
+            font-size: 0.95rem;
+        }
+
+        .client-role {
+            font-family: 'Montserrat', sans-serif;
+            color: #E10600;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        .testimonials-footer {
+            margin-top: 30px;
+        }
+
+        .testimonials-footer a {
+            color: #A0A0A0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .testimonials-footer a:hover {
+            color: #E10600;
+            border-bottom: 1px solid #E10600;
+        }
+
+        @media (max-width: 1024px) {
+            .review-card { flex: 0 0 calc(50% - 10px); }
+        }
+
+        @media (max-width: 768px) {
+            .review-card { flex: 0 0 100%; }
+            .carousel-container { padding: 0 40px; }
+            .prev-btn { left: 0px; }
+            .next-btn { right: 0px; }
+            .testimonials-header h2 { font-size: 2rem; }
+        }
+
+
+        /* =========================================================
+           ESTILOS DA SEÇÃO DE REDES SOCIAIS
+        ========================================================= */
+        .social-section {
+            padding: 80px 5vw;
+            text-align: center;
+        }
+
+        .social-header {
+            margin-bottom: 40px;
+        }
+
+        .social-header .subtitle {
+            color: #E10600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .social-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #F5F5F5;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .social-card {
+            background-color: #111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            text-decoration: none;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(225, 6, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(225, 6, 0, 0.1);
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            margin-bottom: 15px;
+            color: #F5F5F5;
+            transition: color 0.4s ease, transform 0.4s ease;
+        }
+
+        .social-card:hover .social-icon {
+            color: #E10600;
+            transform: scale(1.1);
+        }
+
+        .social-handle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #F5F5F5;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            transition: color 0.4s ease;
+        }
+
+        .social-count {
+            font-family: 'Orbitron', sans-serif;
+            color: #E10600;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .social-label {
+            font-family: 'Montserrat', sans-serif;
+            color: #A0A0A0;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 992px) {
+            .social-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 576px) {
+            .social-grid { grid-template-columns: 1fr; }
+            .social-header h2 { font-size: 2rem; }
+        }
+
+
+        /* =========================================================
+           ESTILOS DA NOVA SEÇÃO DE LOCALIZAÇÃO (MAPA)
+        ========================================================= */
+        .location-section {
+            padding: 80px 5vw;
+        }
+
+        .location-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .location-content {
+            text-align: left;
+        }
+
+        .location-content .subtitle {
+            color: #E10600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .location-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #F5F5F5;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .location-desc {
+            font-family: 'Montserrat', sans-serif;
+            color: #A0A0A0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-icon-wrapper {
+            width: 45px;
+            height: 45px;
+            background-color: #111;
+            border: 1px solid rgba(225, 6, 0, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #E10600;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon-wrapper {
+            background-color: #E10600;
+            color: #FFF;
+            box-shadow: 0 0 15px rgba(225, 6, 0, 0.4);
+        }
+
+        .contact-icon-wrapper svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-details strong {
+            font-family: 'Montserrat', sans-serif;
+            color: #F5F5F5;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-details span {
+            font-family: 'Montserrat', sans-serif;
+            color: #A0A0A0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .btn-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #E10600;
+            color: #FFF;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 16px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .btn-location:hover {
+            background-color: #b30500;
+            box-shadow: 0 10px 20px rgba(225, 6, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .location-map {
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        @media (max-width: 992px) {
+            .location-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .location-content {
+                text-align: center;
+            }
+            .contact-item {
+                text-align: left; /* Mantém os itens alinhados internamente */
+                justify-content: center;
+            }
+            .contact-details {
+                max-width: 250px; /* Ajuda a alinhar o texto quando centralizado */
+            }
+            .location-map {
+                min-height: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-item { justify-content: flex-start; }
+            .location-content h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="logo">Apex<span>Motors</span></a>
+        </div>
+        <div class="navbar-center">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Categorias<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#Supercars">Supercars</a></li>
+                        <li><a href="#Hypercars">Hypercars</a></li>
+                        <li><a href="#Luxury">Luxury Cars</a></li>
+                        <li><a href="#SUVs">Luxury SUVs</a></li>
+                        <li><a href="#GT">Grand Tourers (GT)</a></li>
+                        <li><a href="#Exclusive">Exclusive</a></li>
+                        <li><a href="#Limited">Limited Edition</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Marcas<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="ferrari.html">Ferrari</a></li>
+                        <li><a href="lamborghini.html">Lamborghini</a></li>
+                        <li><a href="porsche.html">Porsche</a></li>
+                        <li><a href="koenigsegg.html">Koenigsegg</a></li>
+                        <li><a href="bugatti.html">Bugatti</a></li>
+                        <li><a href="mclaren.html">McLaren</a></li>
+                        <li><a href="rollsroyce.html">Rolls-Royce</a></li>
+                        <li><a href="pagani.html">Pagani</a></li>
+                    </ul>
+                </li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="quemnossomos.html">Quem somos</a></li>
+                <li><a href="noticias.html">Blog</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar veículo...">
+                <button type="button" aria-label="Buscar">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/cvu2AxwfOUI?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=cvu2AxwfOUI&playsinline=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content animate-on-scroll">
+            <h1>Domine o Asfalto</h1>
+            <p>Velocidade, Potência e o Mais Absoluto Luxo.<br>
+            Descubra a elite automotiva.</p>
+        </div>
+    </header>
+
+    <main id="catalog" class="catalog">
+        
+        <section id="Supercars" class="category-section">
+            <div class="category-header animate-on-scroll">
+                <div class="category-title-group">
+                    <h2>Supercars</h2>
+                    <span class="price-range"></span>
+                </div>
+                <a href="supercars.html" class="btn-see-more">Veja mais modelos</a>
+            </div>
+            <div class="grid">
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/libertywalkaventador.jpg" alt="Liberty Walk Lamborghini Aventador" class="card-img">
+                    <div class="card-info">
+                        <h3>Liberty Walk Lamborghini Aventador</h3>
+                        <p class="price">Consulte</p>
+                        <a href="LiberywalkAventador.html" class="btn btn-outline" style="text-align: center; text-decoration: none;">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/ferrariF430.jpg" alt="Ferrari F430" class="card-img">
+                    <div class="card-info">
+                        <h3>Ferrari F430</h3>
+                        <p class="price">Consulte</p>
+                        <a href="ferrari-f430.html" class="btn btn-outline" style="text-align: center; text-decoration: none;">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/porscheGT3.avif" alt="Porsche 911 GT3 RS" class="card-img">
+                    <div class="card-info">
+                        <h3>Porsche 911 GT3 RS</h3>
+                        <p class="price">Consulte</p>
+                         <a href="porsche911GT3.html" class="btn btn-outline" style="text-align: center; text-decoration: none;">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Hypercars" class="category-section">
+            <div class="category-header animate-on-scroll">
+                <div class="category-title-group">
+                    <h2>Hypercars</h2>
+                    <span class="price-range"></span>
+                </div>
+                <a href="hypercars.html" class="btn-see-more">Veja mais modelos</a>
+            </div>
+            <div class="grid">
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80" alt="Bugatti Chiron" class="card-img">
+                    <div class="card-info">
+                        <h3>Audi R8</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Audi R8')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&w=800&q=80" alt="Koenigsegg Jesko" class="card-img">
+                    <div class="card-info">
+                        <h3>Ferrari F8</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari F8')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1566473965997-3de9c817e938?auto=format&fit=crop&w=800&q=80" alt="Pagani Huayra" class="card-img">
+                    <div class="card-info">
+                        <h3>Lamborghini Huracán</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Lamborghini Huracán')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Luxury" class="category-section">
+            <div class="category-header animate-on-scroll">
+                <div class="category-title-group">
+                    <h2>Luxury Cars</h2>
+                    <span class="price-range"></span>
+                </div>
+                <a href="luxury-cars.html" class="btn-see-more">Veja mais modelos</a>
+            </div>
+            <div class="grid">
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Rolls-Royce Phantom.avif" alt="Rolls-Royce Phantom" class="card-img">
+                    <div class="card-info">
+                        <h3>Rolls-Royce Phantom</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Rolls-Royce Phantom')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Bentley Flying Spur.jpg" alt="Bentley Flying Spur" class="card-img">
+                    <div class="card-info">
+                        <h3>Bentley Flying Spur</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Bentley Flying Spur')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Mercedes-Benz S-Class" class="card-img">
+                    <div class="card-info">
+                        <h3>Mercedes-Benz S-Class</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Mercedes-Benz S-Class')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="SUVs" class="category-section">
+            <div class="category-header animate-on-scroll">
+                <div class="category-title-group">
+                    <h2>Luxury SUVs</h2>
+                    <span class="price-range"></span>
+                </div>
+                <a href="luxury-suvs.html" class="btn-see-more">Veja mais modelos</a>
+            </div>
+            <div class="grid">
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Lamborghini Urus.jpg" alt="Lamborghini Urus" class="card-img">
+                    <div class="card-info">
+                        <h3>Lamborghini Urus</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Lamborghini Urus')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Rolls-Royce Cullinan.jpg" alt="Rolls-Royce Cullinan" class="card-img">
+                    <div class="card-info">
+                        <h3>Rolls-Royce Cullinan</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Rolls-Royce Cullinan')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Bentley Bentayga.jpg" alt="Bentley Bentayga" class="card-img">
+                    <div class="card-info">
+                        <h3>Bentley Bentayga</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Bentley Bentayga')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="GT" class="category-section">
+            <div class="category-header animate-on-scroll">
+                <div class="category-title-group">
+                    <h2>Grand Tourers (GT)</h2>
+                    <span class="price-range"></span>
+                </div>
+                <a href="grand-tourers.html" class="btn-see-more">Veja mais modelos</a>
+            </div>
+            <div class="grid">
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/bmwm6frontview.jpg" alt="BMW M6 GT3" class="card-img">
+                    <div class="card-info">
+                        <h3>BMW M6 GT3</h3>
+                        <p class="price">Consulte</p>
+                        <a href="bmw-m6.html" class="btn btn-outline" style="text-align: center; text-decoration: none;">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Ferrari Roma.jpg" alt="Ferrari Roma" class="card-img">
+                    <div class="card-info">
+                        <h3>Ferrari Roma</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari Roma')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Porsche 911 Turbo.webp" alt="Porsche 911 Turbo" class="card-img">
+                    <div class="card-info">
+                        <h3>Porsche 911 Turbo</h3>
+                        <p class="price">Consulte</p>
+                        <button class="btn btn-outline" onclick="openModal('Porsche 911 Turbo')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Exclusive" class="category-section">
+            <div class="category-header animate-on-scroll">
+                <div class="category-title-group">
+                    <h2>Exclusive</h2>
+                    <span class="price-range"></span>
+                </div>
+                <a href="exclusive.html" class="btn-see-more">Veja mais modelos</a>
+            </div>
+            <div class="grid">
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Bugatti La Voiture Noire136.jpg" alt="Bugatti La Voiture Noire" class="card-img">
+                    <div class="card-info">
+                        <h3>Bugatti La Voiture Noire</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Bugatti La Voiture Noire')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Lamborghini Sián FKP 37136.webp" alt="Lamborghini Sián FKP 37" class="card-img">
+                    <div class="card-info">
+                        <h3>Lamborghini Sián FKP 37</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Lamborghini Sián FKP 37')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/Ferrari Monza SP2.jpg" alt="Ferrari Monza SP2" class="card-img">
+                    <div class="card-info">
+                        <h3>Ferrari Monza SP2</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari Monza SP2')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Limited" class="category-section">
+            <div class="category-header animate-on-scroll">
+                <div class="category-title-group">
+                    <h2>Limited Edition</h2>
+                    <span class="price-range"></span>
+                </div>
+                <a href="limited-edition.html" class="btn-see-more">Veja mais modelos</a>
+            </div>
+            <div class="grid">
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/F1 de lego.jpg" alt="Carro de F1 de Lego" class="card-img">
+                    <div class="card-info">
+                        <h3>Carro de F1 de Lego</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Carro de F1 de Lego')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="/imagens/SUPRAMK4.webp" alt="Lamborghini Sián FKP 37" class="card-img">
+                    <div class="card-info">
+                        <h3>Toyota Supra MK4</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Toyota Supra MK4')">Ver Detalhes</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=800&q=80" alt="Ferrari Monza SP2" class="card-img">
+                    <div class="card-info">
+                        <h3>Ferrari Tributo</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari Monza SP2')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Benefits" class="category-section">
+            <div class="benefits-grid animate-on-scroll">
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <div class="benefit-info">
+                        <h4>1 Ano de Carência</h4>
+                        <p>Pague a primeira parcela só em 2027</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="benefit-info">
+                        <h4>Garantia de 1 Ano</h4>
+                        <p>Motor e câmbio - Consulte condições</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                        </svg>
+                    </div>
+                    <div class="benefit-info">
+                        <h4>Procedência Verificada</h4>
+                        <p>Histórico completo e laudo cautelar incluso</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="benefit-info">
+                        <h4>25 Anos de Mercado</h4>
+                        <p>Desde 2001, referência em veículos premium</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="Testimonials" class="testimonials-section category-section">
+            <div class="testimonials-header animate-on-scroll">
+                <span class="subtitle">Depoimentos</span>
+                <h2>O Que Nossos Clientes Dizem</h2>
+                <div class="rating-summary">
+                    <span class="stars-summary">★★★★★</span> 4.8 de 5 • 1300+ avaliações no Google
+                </div>
+            </div>
+
+            <div class="carousel-container animate-on-scroll">
+                <button class="carousel-btn prev-btn" aria-label="Avaliação Anterior">❮</button>
+                
+                <div class="carousel-track" id="reviewsTrack">
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-danilo.png" alt="Ferrari entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprei meu Rolls-Royce Cullinan Mansory no site e a experiência de compra foi impecável do início ao fim! O grande destaque, sem dúvida, foi o serviço adicional de personalização de pintura que contratei com vocês. A arte do Corinthians na lateral ficou com um acabamento automotivo perfeito, unindo luxo e paixão de forma brilhante. Valeu cada centavo extra pago pela exclusividade, recomendo de olhos fechados o serviço de pintura do site! <br> Vai Corinthians!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Danilo S.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-nelson.png" alt="Koenigsegg Showroom">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprei o combo com o Porsche 963 do Felipe Nasr e o 911 RSR "Rexy" pelo site e a experiência foi espetacular! O grande destaque foi o serviço adicional de vitrificação e detalhamento de pintura de competição que contratei. O verde jurássico do Rexy e as cores da equipe Penske ganharam um acabamento de museu sem perder a alma das pistas. Valeu cada centavo extra pago por esse cuidado exclusivo, recomendo o estúdio do site de olhos fechados! Nos vemos em Le Mans!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Nelson M.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-monica.png" alt="Porsche GT3">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprei o Batmóvel de Batman O Retorno pelo site e o atendimento foi digno de um verdadeiro herói! O diferencial foi o serviço extra de ajuste na mecânica da turbina que solicitei para garantir máxima potência. O ronco do motor e o sistema de ejeção funcionam com uma precisão cirúrgica, unindo tecnologia e realismo. Valeu cada centavo investido nessa customização, o nível de detalhamento do site é de outro planeta. <br>Gotham está protegida!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Monica P.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-lucao.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Adquirir meu Audi A5 Coupe 2024 por essa plataforma foi uma decisão incrivelmente acertada desde o primeiro clique. Fiz questão de incluir o pacote premium de customização visual oferecido pelo site e o resultado final é de cair o queixo. A harmonia entre a carroceria em preto fosco e os toques em black piano trouxe uma agressividade sofisticada e impecável. O valor investido nesse serviço extra compensa demais pela exclusividade entregue, a oficina de vocês está de parabéns!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Luca Ar.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-adjunto.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Realizar o sonho de comprar o Skyline GT-R R34 "Bayside Blue" pelo site foi uma experiência além das expectativas! O grande trunfo foi ter contratado o pacote adicional de estética cinematográfica oferecido pela equipe de vocês. O acerto na tonalidade exata do azul e o polimento espelhado deixaram a máquina idêntica à do Brian O'Conner. O investimento extra nesse trabalho minucioso valeu a pena demais, o cuidado do site é lendário. Ride or die!"</p>
+                            <div class="client-info">
+                                <span class="client-name">João Ad.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-mamaco.png" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Arrematar o Apollo Intensa Emozione "Purple Dragon" e o clássico Mustang 69 Fastback juntos pelo site foi surreal! O que mais me impressionou foi o serviço adicional de vitrificação de dupla camada que incluí no pedido. O roxo iridescente do Apollo e a pintura de época do Mustang ganharam uma profundidade absurda e um brilho de exposição. Pagar por esse tratamento premium fez toda a diferença na entrega final, recomendo muito o estúdio de estética de vocês!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Kauã L.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-wla.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprar o icônico Mini Cooper do Mr. Bean pelo site foi uma das experiências mais divertidas e nostálgicas que já tive! O ponto alto do pedido foi o serviço extra de customização e montagem de adereços clássicos oferecido pela equipe. A instalação da famosa poltrona no teto, junto com as cordas e a vassoura, ficou com um realismo e uma firmeza impecáveis. O valor investido nessa personalização exclusiva compensou cada centavo, a atenção aos detalhes do site é absurda. Cadê o Teddy?"</p>
+                            <div class="client-info">
+                                <span class="client-name">Wladimir W.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-enzo.webp" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprar meu Aston Martin DBS 2023 através da plataforma elevou completamente o meu padrão de exigência automotiva! O pacote de serviços adicionais é insano: a pintura personalizada, o interior sob medida e o upgrade de performance deixaram o carro único. Além do visual e motor, a blindagem de alto nível, o rastreamento avançado e o transporte especializado garantiram segurança total na entrega. Cada centavo investido nesse nível de customização extrema valeu a pena, vocês entregaram uma verdadeira máquina de agente secreto!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Enzo F.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-dania.webp" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Adquirir a minha BYD Yangwang U8L através do portal foi uma experiência de compra surpreendente e de altíssimo nível. O grande diferencial foi ter contratado o serviço adicional de blindagem ultraleve certificada oferecido pela equipe de vocês. O acabamento ficou imperceptível, mantendo toda a tecnologia e o desempenho absurdo dessa SUV elétrica sem comprometer o conforto. O investimento nessa proteção extra valeu cada centavo pela paz de espírito e exclusividade entregue. Serviço impecável!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Dania S.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-fe.webp" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Trazer o meu Mazda RX-7 cinza para a garagem através do site foi uma decisão fenomenal do início ao fim! A melhor escolha que fiz foi incluir o serviço extra de montagem e harmonização do bodykit aerodinâmico oferecido por vocês. O encaixe milimétrico das peças e o nivelamento perfeito da pintura cinza deixaram o carro com um visual agressivo e impecável. O investimento nessa customização premium valeu cada centavo, a equipe transformou uma lenda do JDM em uma verdadeira obra de arte!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Fermanda M.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-dilsu.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Fechar a compra do meu Tesla Model S por essa plataforma foi a melhor escolha para entrar na era da alta performance elétrica! O ponto alto foi o pacote extra de envelopamento PPF fosco e "chrome delete" que adicionei diretamente no carrinho. O visual stealth escurecido ficou com um acabamento impecável, destacando o design futurista do carro sem perder a classe. O investimento nesse cuidado estético exclusivo valeu muito a pena, a equipe de vocês manda muito bem. Modo Plaid ativado!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Adilsu jr.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-anne.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprar o icônico Honda S2000 rosa da Suki pelo site foi a realização do sonho de qualquer fã da franquia! O diferencial absoluto foi o serviço extra de adesivagem artística e instalação de neon underglow que contratei. O tom de rosa vibrante e a precisão milimétrica dos grafismos florais deixaram o carro idêntico ao do cinema. O investimento nessa personalização insana compensou demais, a equipe entregou uma verdadeira máquina de Miami!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Marianne A.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-celle.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprar meu Cadillac Escalade pelo site foi uma experiência de luxo absoluto e de total confiança do início ao fim! O grande trunfo da negociação foi ter incluído o serviço adicional de blindagem de alto nível oferecido pela equipe. O trabalho ficou imperceptível e perfeito, garantindo proteção balística extrema sem comprometer o conforto e o silêncio da cabine. O investimento nessa segurança extra valeu cada centavo pago, a plataforma me entregou um verdadeiro cofre sobre rodas!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Marcelle F.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-vini.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprar o lendário Siri Movel do Bob Esponja em tamanho real por aqui foi, sem dúvida, a experiência mais divertida e inusitada da minha vida! O grande trunfo foi o serviço adicional de texturização hiper-realista que a equipe aplicou no acabamento de "hambúrguer". O visual ficou impressionante, com o pão de gergelim, os picles nas rodas e a espátula no teto parecendo saídos direto do desenho. O investimento nessa customização exclusiva valeu cada centavo, transformaram um sonho de infância em realidade! "Estou pronto!""</p>
+                            <div class="client-info">
+                                <span class="client-name">Vinicius M.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-thomas.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Adquirir o novíssimo Kia K4 2025 por este portal foi uma experiência moderna, ágil e super eficiente! O grande diferencial da compra foi ter adicionado o pacote extra de customização interna com couro premium oferecido por vocês. O acabamento dos bancos com costuras contrastantes ficou sensacional, elevando o conforto e combinando perfeitamente com o design futurista do sedã. O investimento nesse upgrade exclusivo valeu cada centavo pago, recomendo muito o capricho e a atenção aos detalhes do site!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Tomás F.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-foxy.webp" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Encontrar o clássico Impala 1967 através desta plataforma foi a melhor decisão para um fã aficionado por Supernatural! O grande diferencial foi o serviço extra de polimento do preto absoluto e a construção sob medida do fundo falso no porta-malas. O acabamento perfeito da pintura e o compartimento de armas do Dean deixaram a "Baby" exatamente como nas telas. O investimento nessa customização exclusiva valeu muito a pena, a equipe de vocês capturou a alma da série. O negócio da família continua!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Gabriel H.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-danilo2.webp" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Fechar a compra do meu Corvette C8 2025 por esta plataforma foi uma experiência digna de um verdadeiro supercarro! O grande trunfo do pedido foi ter incluído o serviço adicional de instalação do pacote aerodinâmico em fibra de carbono. O contraste das peças de carbono com as linhas agressivas do motor central elevou o visual para um nível absurdo de esportividade. O investimento nesse upgrade de alta performance valeu cada centavo, a equipe de vocês entregou um verdadeiro caça de rua!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Danilo S.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-tiago.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Adquirir minha Porsche Cayenne através do site foi uma experiência fantástica que uniu luxo absoluto e total tranquilidade! O grande diferencial foi o serviço adicional de blindagem de última geração que contratei diretamente no pedido. A integração dos vidros balísticos e a proteção da carroceria ficaram imperceptíveis, mantendo a performance esportiva e o requinte da SUV intactos. O investimento nessa segurança premium valeu cada centavo, a equipe de vocês entrega um trabalho de excelência. Proteção máxima com pura elegância!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Tiago B.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-isabelly.png" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprar o raríssimo Rolls-Royce La Rose Noire Droptail por esta plataforma foi uma tacada de mestre e de puro glamour! O ponto altíssimo do pedido foi o serviço extra de pintura artística unindo o universo da Hello Kitty com a estética da Penélope Charmosa. A fusão do requinte britânico com o rosa perolado e os traços incrivelmente detalhados das personagens transformou o carro numa obra-prima pop. O valor investido nessa personalização extravagante compensou imensamente, a equipe de vocês criou a máquina mais fabulosa das ruas!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Isabelly M.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-lucao2.jpg" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Comprar minha F-150 Raptor azul pelo site foi brutal! O grande destaque foi a vitrificação cerâmica off-road e a proteção de caçamba. A pintura ganhou um brilho espetacular e ficou 100% protegida para encarar trilhas pesadas sem arranhões. Valeu cada centavo, vocês entregaram um monstro pronto para a ação! A entrega foi super ágil e a picape chegou em estado impecável direto na minha garagem. Mal posso esperar para testar a suspensão nas dunas e colocar todo esse torque à prova no fim de semana!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Luca Ar.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-img-container">
+                            <img src="/imagens/review-dilsu2.webp" alt="Lamborghini entregue">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Adquirir o meu Audi R8 2025 através da plataforma foi a realização definitiva do sonho de ter um supercarro impecável! O grande diferencial da compra foi ter incluído o serviço extra de customização do sistema de exaustão em titânio oferecido pela equipe de vocês. O ronco do motor V10 ficou ainda mais visceral e estrondoso, elevando a experiência de pilotagem a um nível absurdo de esportividade. O investimento nesse upgrade de performance valeu cada centavo pago, vocês entregaram uma verdadeira sinfonia alemã sobre rodas!"</p>
+                            <div class="client-info">
+                                <span class="client-name">Adilsu Jr.</span>
+                                <span class="client-role">Cliente ApexMotors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="carousel-btn next-btn" aria-label="Próxima Avaliação">❯</button>
+            </div>
+
+            <div class="testimonials-footer animate-on-scroll">
+                <a href="#">Ver todas as avaliações no Google Maps →</a>
+            </div>
+        </section>
+
+        <section id="Social" class="social-section category-section">
+            <div class="social-header animate-on-scroll">
+                <span class="subtitle">Siga-nos</span>
+                <h2>Nossas Redes Sociais</h2>
+            </div>
+            
+            <div class="social-grid animate-on-scroll">
+                <a href="javascript:void(0)" class="social-card" aria-label="Siga-nos no Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg>
+                    <div class="social-handle">@apexmotors</div>
+                    <div class="social-count">2.1M</div>
+                    <div class="social-label">seguidores</div>
+                </a>
+
+                <a href="javascript:void(0)" class="social-card" aria-label="Siga-nos no Facebook">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.324V1.325C24 .597 23.403 0 22.675 0z"/>
+                    </svg>
+                    <div class="social-handle">ApexMotors</div>
+                    <div class="social-count">500K</div>
+                    <div class="social-label">seguidores</div>
+                </a>
+
+                <a href="javascript:void(0)" class="social-card" aria-label="Siga-nos no YouTube">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <div class="social-handle">ApexMotors TV</div>
+                    <div class="social-count">980K</div>
+                    <div class="social-label">inscritos</div>
+                </a>
+
+                <a href="javascript:void(0)" class="social-card" aria-label="Contate-nos no WhatsApp">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.031 0C5.385 0 0 5.388 0 12.036c0 2.125.553 4.197 1.605 6.02L.003 24l6.096-1.599A11.96 11.96 0 0 0 12.031 24c6.646 0 12.034-5.388 12.034-12.036S18.677 0 12.031 0zm0 21.996a9.92 9.92 0 0 1-5.068-1.385l-.364-.216-3.766.988.997-3.673-.237-.378A9.917 9.917 0 0 1 2.035 12.04c0-5.514 4.49-10.005 10.003-10.005 5.513 0 10.004 4.49 10.004 10.005 0 5.515-4.491 10.006-10.004 10.006h-.007zm5.496-7.514c-.301-.151-1.785-.882-2.062-.983-.277-.1-.479-.151-.68.151-.202.302-.782.983-.958 1.184-.176.202-.353.227-.654.076-1.423-.715-2.52-1.341-3.486-2.985-.202-.345.202-.32.497-.91.076-.151.038-.282-.025-.433-.063-.151-.68-1.64-.932-2.247-.246-.593-.497-.513-.68-.522-.176-.008-.378-.008-.579-.008-.201 0-.528.076-.805.378-.277.302-1.057 1.033-1.057 2.519s1.082 2.92 1.233 3.12c.151.202 2.128 3.248 5.155 4.557 2.052.89 2.821.958 3.867.807 1.133-.163 2.245-.983 2.56-1.94.314-.957.314-1.783.22-1.956-.088-.181-.314-.282-.616-.433z"/>
+                    </svg>
+                    <div class="social-handle">Consultoria VIP</div>
+                    <div class="social-count">24/7</div>
+                    <div class="social-label">atendimento</div>
+                </a>
+            </div>
+        </section>
+
+        </main>
+
+    <section id="Location" class="location-section category-section">
+            <div class="location-container animate-on-scroll">
+                
+                <div class="location-content">
+                    <span class="subtitle">Visite a ApexMotors</span>
+                    <h2>Nossa Localização</h2>
+                    <p class="location-desc">Nosso showroom premium foi projetado para oferecer uma experiência exclusiva e imersiva. Venha conhecer de perto as máquinas mais desejadas do mundo com atendimento totalmente personalizado.</p>
+                    
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <div class="contact-icon-wrapper">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <div class="contact-details">
+                                <strong>Endereço</strong>
+                                <span>Av. Europa, 800 - Jardins<br>São Paulo - SP, 01449-000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon-wrapper">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div class="contact-details">
+                                <strong>Contato VIP</strong>
+                                <span>+55 (11) 99999-9999<br>concierge@apexmotors.com.br</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon-wrapper">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="contact-details">
+                                <strong>Horário de Atendimento</strong>
+                                <span>Segunda a Sexta: 09h às 19h<br>Sábados: 09h às 14h (Com hora marcada)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.google.com" target="_blank" class="btn-location">Traçar Rota</a>
+                </div>
+
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.968270528243!2d-46.67104712390824!3d-23.570222361864114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d7b420286b%3A0x1d47cebb68c005b6!2sAv.%20Europa%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1714088915858!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+        </section>
+
+    <footer>
+        <a href="#home" class="logo">Apex<span>Motors</span></a>
+        <p>© 2026 Apex Motors. A excelência automotiva reimaginada.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('reviewsTrack');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+
+            if (track && prevBtn && nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    const cardWidth = track.querySelector('.review-card').offsetWidth + 20;
+                    track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    const cardWidth = track.querySelector('.review-card').offsetWidth + 20;
+                    track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ferrari Collection na ApexMotors. Explore nossa curadoria exclusiva de Supercars, Hypercars, Grand Tourers e Edições Limitadas da marca do cavallino rampante.">
+    <title>Ferrari Collection | ApexMotors</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .category-section {
+            padding: 60px 5vw;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .category-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* O SEGREDO DO TAMANHO: 
+           Ao invés de limitar em pixels, o flex-basis usa a exata proporção 
+           de 3 colunas do index.html. O 'max-width' garante que as fileiras com 
+           apenas 2 carros não estiquem e fiquem maiores que os de cima.
+        */
+        .centered-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .centered-grid .card {
+            flex: 1 1 calc(33.333% - 20px);
+            max-width: calc(33.333% - 20px); /* Trava o crescimento para o exato tamanho do index */
+            min-width: 320px;
+            /* Removemos margins e paddings inline para herdar 100% do styles.css */
+        }
+
+        /* Responsividade mantendo o mesmo comportamento nativo do site */
+        @media (max-width: 1024px) {
+            .centered-grid .card {
+                flex: 1 1 calc(50% - 15px);
+                max-width: calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .centered-grid .card { 
+                flex: 1 1 100%;
+                max-width: 100%; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="logo">Apex<span>Motors</span></a>
+        </div>
+        <div class="navbar-center">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Categorias<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="supercars.html">Supercars</a></li>
+                        <li><a href="hypercars.html">Hypercars</a></li>
+                        <li><a href="luxury-cars.html">Luxury Cars</a></li>
+                        <li><a href="luxury-suvs.html">Luxury SUVs</a></li>
+                        <li><a href="grand-tourers.html">Grand Tourers (GT)</a></li>
+                        <li><a href="exclusive.html">Exclusive</a></li>
+                        <li><a href="limited-edition.html">Limited Edition</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Marcas<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="ferrari.html">Ferrari</a></li>
+                        <li><a href="lamborghini.html">Lamborghini</a></li>
+                        <li><a href="porsche.html">Porsche</a></li>
+                        <li><a href="koenigsegg.html">Koenigsegg</a></li>
+                        <li><a href="bugatti.html">Bugatti</a></li>
+                        <li><a href="mclaren.html">McLaren</a></li>
+                        <li><a href="rollsroyce.html">Rolls-Royce</a></li>
+                        <li><a href="pagani.html">Pagani</a></li>
+                    </ul>
+                </li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="quemnossomos.html">Quem somos</a></li>
+                <li><a href="noticias.html">Blog</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar veículo...">
+                <button type="button" aria-label="Buscar">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="about-hero" style="background-image: linear-gradient(rgba(11, 11, 11, 0.7), rgba(11, 11, 11, 0.95)), url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1920&q=80');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="category-subtitle">Marcas Exclusivas</span>
+            <h1 class="hero-title"><span>Ferrari</span> <br>Collection</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="category-section">
+            <div class="section-header animate-on-scroll">
+                <h2 class="category-title">Supercars</h2>
+            </div>
+            <div class="centered-grid">
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80" alt="Ferrari F8 Tributo" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Ferrari F8 Tributo</h3>
+                        <p class="price">R$ 4.500.000,00</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari F8 Tributo')">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1592853625511-addaf6b42b93?auto=format&fit=crop&w=800&q=80" alt="Ferrari SF90 Stradale" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Ferrari SF90 Stradale</h3>
+                        <p class="price">R$ 7.200.000,00</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari SF90 Stradale')">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Ferrari 296 GTB" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Ferrari 296 GTB</h3>
+                        <p class="price">R$ 5.100.000,00</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari 296 GTB')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="section-header animate-on-scroll">
+                <h2 class="category-title">Grand Tourers (GT)</h2>
+            </div>
+            <div class="centered-grid">
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1655106567540-3453b3f2c5fb?auto=format&fit=crop&w=800&q=80" alt="Ferrari Roma" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Ferrari Roma</h3>
+                        <p class="price">R$ 3.800.000,00</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari Roma')">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1658428135876-0f73c4f74dcb?auto=format&fit=crop&w=800&q=80" alt="Ferrari Purosangue" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Ferrari Purosangue</h3>
+                        <p class="price">R$ 7.800.000,00</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari Purosangue')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-section" style="margin-bottom: 40px;">
+            <div class="section-header animate-on-scroll">
+                <h2 class="category-title">Limited Edition</h2>
+            </div>
+            <div class="centered-grid">
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=800&q=80" alt="Ferrari Monza SP2" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Ferrari Monza SP2</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari Monza SP2')">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1678122604084-2a6237190ce1?auto=format&fit=crop&w=800&q=80" alt="Ferrari Daytona SP3" class="card-img" loading="lazy">
+                    <div class="card-info">
+                        <h3>Ferrari Daytona SP3</h3>
+                        <p class="price">Sob Consulta</p>
+                        <button class="btn btn-outline" onclick="openModal('Ferrari Daytona SP3')">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="carModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h2 id="modalTitle" class="category-title" style="font-size: 2rem; margin-bottom: 20px;"></h2>
+            <p style="margin-bottom: 30px; color: var(--text-color); font-weight: 300;">
+                Especificações de engenharia de ponta, customização exclusiva e desempenho absoluto. Entre em contato para agendar uma consultoria privada e configurar sua máquina sob medida.
+            </p>
+            <button class="btn">Solicitar Contato Especializado</button>
+        </div>
+    </div>
+
+    <footer>
+        <a href="index.html#home" class="logo">Apex<span>Motors</span></a>
+        <p>© 2026 Apex Motors. A excelência automotiva reimaginada.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
