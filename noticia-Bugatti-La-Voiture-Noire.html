@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bugatti La Voiture Noire: O mistério do carro mais caro do mundo foi finalmente revelado. Conheça a surpreendente história do comprador e o destino deste exemplar único.">
+    <title>Bugatti La Voiture Noire: O Enigma de 16 Milhões de Euros | ApexMotors</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* =========================================================
+           ESTILOS ESPECÍFICOS DA PÁGINA DE NOTÍCIA PREMIUM
+        ========================================================= */
+        .news-hero {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            min-height: 500px;
+            display: flex;
+            align-items: flex-end;
+            /* Fundo com imagem do Bugatti La Voiture Noire */
+            background: linear-gradient(to top, #0B0B0B 0%, rgba(11, 11, 11, 0.4) 50%, rgba(11, 11, 11, 0.1) 100%), 
+                        url('/imagens/Bugatti\ La\ Voiture\ Noire-frontview.jpg') center/cover no-repeat;
+            padding: 5vw;
+            margin-top: 90px;
+        }
+
+        .news-hero-content {
+            max-width: 900px;
+            animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .news-tag {
+            color: #E10600;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .news-hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #F5F5F5;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .news-hero p.subtitle {
+            font-size: 1.2rem;
+            color: #ddd;
+            font-weight: 300;
+            margin-bottom: 20px;
+            max-width: 800px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .news-meta {
+            font-size: 0.85rem;
+            color: #888;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .article-container {
+            max-width: 850px;
+            margin: 60px auto;
+            padding: 0 5vw;
+        }
+
+        .article-content p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .article-content p strong {
+            color: #fff;
+        }
+
+        .article-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+            margin: 50px 0 25px 0;
+            border-left: 4px solid #E10600;
+            padding-left: 15px;
+        }
+
+        .article-image-wrapper {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .article-image {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            transition: transform 0.5s ease;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .specs-table-wrapper {
+            overflow-x: auto;
+            margin: 40px 0;
+            border-radius: 8px;
+            background-color: #151515;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .specs-table th, .specs-table td {
+            padding: 18px 25px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .specs-table th {
+            color: #E10600;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            width: 35%;
+        }
+
+        .specs-table td {
+            color: #eee;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .video-section {
+            margin: 60px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin: 60px 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="logo">Apex<span>Motors</span></a>
+        </div>
+        <div class="navbar-center">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Categorias<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="supercars.html">Supercars</a></li>
+                        <li><a href="hypercars.html">Hypercars</a></li>
+                        <li><a href="luxury-cars.html">Luxury Cars</a></li>
+                        <li><a href="luxury-suvs.html">Luxury SUVs</a></li>
+                        <li><a href="grand-tourers.html">Grand Tourers (GT)</a></li>
+                        <li><a href="exclusive.html">Exclusive</a></li>
+                        <li><a href="limited-edition.html">Limited Edition</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Marcas<span class="arrow"></span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="ferrari.html">Ferrari</a></li>
+                        <li><a href="lamborghini.html">Lamborghini</a></li>
+                        <li><a href="porsche.html">Porsche</a></li>
+                        <li><a href="koenigsegg.html">Koenigsegg</a></li>
+                        <li><a href="bugatti.html">Bugatti</a></li>
+                        <li><a href="mclaren.html">McLaren</a></li>
+                        <li><a href="rollsroyce.html">Rolls-Royce</a></li>
+                        <li><a href="pagani.html">Pagani</a></li>
+                    </ul>
+                </li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="quemnossomos.html">Quem somos</a></li>
+                <li><a href="noticias.html">Blog</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar veículo...">
+                <button type="button" aria-label="Buscar">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="news-hero">
+        <div class="news-hero-content">
+            <span class="news-tag">Exemplar Único</span>
+            <h1>Bugatti La Voiture Noire: O Mistério de 16 Milhões de Euros Revelado</h1>
+            <p class="subtitle">Após anos de especulações e teorias falsas, a identidade do dono do carro mais exclusivo do mundo vem à tona com uma reviravolta familiar.</p>
+            <div class="news-meta">
+                REDAÇÃO POR <strong>ISABELLY MARTINS</strong> | ABRIL DE 2026
+            </div>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <article class="article-content">
+            
+            <p class="fade-in-scroll">
+                Desde a sua apresentação arrebatadora no Salão de Genebra em 2019, o <strong>Bugatti La Voiture Noire</strong> tornou-se a personificação do mistério no mundo automotivo. Concebido como uma "escultura sobre rodas" e um tributo ao desaparecido Type 57 SC Atlantic de Jean Bugatti, este exemplar único (one-off) foi arrematado por aproximadamente € 16,7 milhões (cerca de R$ 100,3 milhões). Mas a verdadeira pergunta sempre foi: quem assinou o cheque?
+            </p>
+
+            <h2 class="fade-in-scroll">Fim das Especulações e a Verdade</h2>
+            <p class="fade-in-scroll">
+                Durante anos, a imprensa e os fãs criaram inúmeras teorias. Rumores apontavam para xeiques do petróleo ou estrelas do esporte como Cristiano Ronaldo. No entanto, a realidade revelou uma reviravolta profundamente entrelaçada à própria história do conglomerado alemão: o hipercarro mais caro e exclusivo já construído pertencia à família <strong>Porsche-Piëch</strong>.
+            </p>
+
+            <div class="article-image-wrapper fade-in-scroll">
+                <img src="/imagens/Bugatti La Voiture Noire-exousts.jpg" alt="Detalhe traseiro do Bugatti La Voiture Noire com suas seis saídas de escape" class="article-image" loading="lazy">
+                <p class="image-caption">As impressionantes seis saídas de escape e a silhueta escultural em fibra de carbono brilhante.</p>
+            </div>
+
+            <h2 class="fade-in-scroll">A Reviravolta: O Herdeiro e as Finanças</h2>
+            <p class="fade-in-scroll">
+                O veículo apenas foi finalizado e entregue em 2021, momento em que passou para as mãos de <strong>Anton Piëch</strong>, filho do falecido gênio da indústria Ferdinand Piëch (ex-presidente do Grupo VW e principal arquiteto do renascimento da Bugatti). Mas a história não termina em um final de contos de fadas.
+            </p>
+            <p class="fade-in-scroll">
+                Fontes recentes revelaram que a empresa automotiva fundada por Anton, a Piëch Automotive, tem lutado para sobreviver. Sem um veículo de produção na rua após uma década e explorando até mesmo integrações com a gigante chinesa Chery, o herdeiro precisa desesperadamente de liquidez. Isso coloca o futuro deste exemplar sagrado do automobilismo num terreno incerto: poderá o <em>La Voiture Noire</em> mudar de mãos em breve?
+            </p>
+
+            <div class="article-image-wrapper fade-in-scroll">
+                <img src="/imagens/Bugatti La Voiture Noire-rearview.jpg" alt="Detalhe traseiro do Bugatti La Voiture Noire com suas seis saídas de escape" class="article-image" loading="lazy">
+            </div>
+
+            <h2 class="fade-in-scroll">A Engenharia Intocável</h2>
+            <p class="fade-in-scroll">
+                Independentemente do drama nos bastidores, o carro continua sendo o zênite da engenharia de Molsheim. Sob a carroceria artesanal feita em fibra de carbono negro brilhante, pulsa o lendário motor W16 Quad-Turbo de 8.0 litros, capaz de conjugar o conforto supremo de um Grand Tourer com o desempenho devastador que consagrou a era de ouro da Bugatti moderna.
+            </p>
+
+            <div class="specs-table-wrapper fade-in-scroll">
+                <table class="specs-table">
+                    <tbody>
+                        <tr>
+                            <th>Motor</th>
+                            <td>8.0L W16 Quad-Turbo</td>
+                        </tr>
+                        <tr>
+                            <th>Potência Máxima</th>
+                            <td>1.500 cv</td>
+                        </tr>
+                        <tr>
+                            <th>Torque Máximo</th>
+                            <td>1.600 Nm</td>
+                        </tr>
+                        <tr>
+                            <th>Proprietário Confirmado</th>
+                            <td>Anton Piëch (Família Porsche-Piëch)</td>
+                        </tr>
+                        <tr>
+                            <th>Preço Arrematado</th>
+                            <td>Aprox. € 16,7 Milhões (R$ 100,3 Milhões)</td>
+                        </tr>
+                        <tr>
+                            <th>Exclusividade</th>
+                            <td>One-off (1 unidade produzida)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="fade-in-scroll">Conclusão ApexMotors</h2>
+            <p class="fade-in-scroll">
+                A verdadeira história por trás do Bugatti La Voiture Noire mostra que nem todo conto automobilístico é feito apenas de vitórias, mas também de legados pesados e impérios sob pressão. A joia negra da coroa da Bugatti permanece intocada como o ápice do design automotivo, enquanto o mercado global de colecionadores aguarda para ver se a crise trará esta obra de arte ao mercado novamente.
+            </p>
+
+            <div class="video-section fade-in-scroll">
+                <h2>O Vislumbre da Escultura sobre Rodas</h2>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/3SNrG68H0SQ?rel=0" title="Bugatti La Voiture Noire Official" allowfullscreen></iframe>
+                </div>
+                <p class="image-caption">Assista aos detalhes visuais de uma das criações mais espetaculares já homologadas para as ruas.</p>
+            </div>
+
+            <div class="cta-container fade-in-scroll">
+                <h3 style="color: #fff; margin-bottom: 10px;">Deseja o Inatingível?</h3>
+                <p style="font-size: 0.95rem; margin-bottom: 25px;">Nossa rede de contatos globais oferece acesso aos hipercarros mais restritos e colecionáveis da atualidade.</p>
+                <a href="hypercars.html" class="btn" style="background-color: #E10600; color: #fff; padding: 12px 30px; text-decoration: none; font-family: 'Orbitron';">Ver Catálogo Hypercars</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <a href="index.html#home" class="logo">Apex<span>Motors</span></a>
+        <p>© 2026 Apex Motors. A excelência automotiva reimaginada.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll('.fade-in-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
