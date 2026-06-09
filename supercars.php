@@ -14,57 +14,20 @@ $supercars = buscarVeiculosPorCategoria('Supercars');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .category-section { padding: 60px 5vw; }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .centered-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            width: 100%;
-        }
-        .card-carro {
-            background: rgba(14, 14, 14, 0.9);
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,.25);
-            width: min(320px, 100%);
-            display: flex;
-            flex-direction: column;
-        }
-        .img-container { width: 100%; min-height: 220px; overflow: hidden; }
-        .img-fluida { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .card-body { padding: 22px; }
-        .card-body h3 { margin: 0 0 12px; font-size: 1.2rem; }
-        .status-preco { margin: 0 0 12px; color: #f9b600; font-weight: 600; }
-        .btn-detalhes {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #f7a600;
-            color: #111;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: transform .2s ease, background .2s ease;
-        }
-        .btn-detalhes:hover { transform: translateY(-2px); background: #ffb933; }
-        @media (max-width: 768px) { .centered-grid { gap: 20px; } }
-    </style>
+    
 </head>
 <body>
     <nav class="navbar" id="navbar">
         <div class="navbar-left">
-            <a href="index.html" class="logo">Apex<span>Motors</span></a>
+            <a href="/index.php" class="logo">Apex<span>Motors</span></a>
         </div>
         <div class="navbar-center">
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/index.php">Home</a></li>
                 <li><a href="/supercars.php">Supercars</a></li>
-                <li><a href="servicos.html">Serviços</a></li>
-                <li><a href="quemnossomos.html">Quem somos</a></li>
-                <li><a href="noticias.html">Blog</a></li>
+                <li><a href="/servicos.html">Serviços</a></li>
+                <li><a href="/quemnossomos.html">Quem somos</a></li>
+                <li><a href="/noticias.html">Blog</a></li>
             </ul>
         </div>
     </nav>
@@ -134,7 +97,7 @@ $supercars = buscarVeiculosPorCategoria('Supercars');
     </main>
 
     <footer>
-        <a href="index.html#home" class="logo">Apex<span>Motors</span></a>
+        <a href="/index.php#home" class="logo">Apex<span>Motors</span></a>
         <p>© 2026 Apex Motors. A excelência automotiva reimaginada.</p>
     </footer>
 </body>

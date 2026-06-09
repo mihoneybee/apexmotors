@@ -98,6 +98,32 @@ function buscarVeiculosPorCategoria(string $categoria): array
     return supabaseQueryRows($sql, ['categoria' => $categoria]);
 }
 
+function buscarVeiculosDestaquePorCategoria(string $categoria, int $limit = 3): array
+{
+    $limit = max(1, min($limit, 50));
+
+    $sql = sprintf(
+        'SELECT * FROM %s WHERE categoria = :categoria ORDER BY id ASC LIMIT %d',
+        SUPABASE_CARS_TABLE,
+        $limit
+    );
+
+    return supabaseQueryRows($sql, ['categoria' => $categoria]);
+}
+
+function buscarVeiculosPorMarca(string $marca): array
+{
+    $brandSlug = preg_replace('/[^a-z0-9]+/u', '-', strtolower(trim($marca)));
+    $brandSlug = trim($brandSlug, '-');
+
+    $sql = sprintf(
+        "SELECT * FROM %s WHERE regexp_replace(lower(marca), '[^a-z0-9]+', '-', 'g') = :brandSlug ORDER BY id ASC",
+        SUPABASE_CARS_TABLE
+    );
+
+    return supabaseQueryRows($sql, ['brandSlug' => $brandSlug]);
+}
+
 function buscarVeiculoById($id): ?array
 {
     $sql = sprintf('SELECT * FROM %s WHERE id = :id LIMIT 1', SUPABASE_CARS_TABLE);

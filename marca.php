@@ -1,27 +1,28 @@
 <?php
 require_once __DIR__ . '/supabase.php';
 
-$categoryMap = [
-    'supercars' => 'Supercars',
-    'hypercars' => 'Hypercars',
-    'luxury-cars' => 'Luxury Cars',
-    'luxury-suvs' => 'Luxury SUVs',
-    'grand-tourers' => 'Grand Tourers',
-    'exclusive' => 'Exclusive',
-    'limited-edition' => 'Limited Edition',
+$brandMap = [
+    'ferrari' => 'Ferrari',
+    'lamborghini' => 'Lamborghini',
+    'porsche' => 'Porsche',
+    'koenigsegg' => 'Koenigsegg',
+    'bugatti' => 'Bugatti',
+    'mclaren' => 'McLaren',
+    'rolls-royce' => 'Rolls-Royce',
+    'pagani' => 'Pagani',
 ];
 
-$categorySlug = strtolower(trim($_GET['category'] ?? $_GET['categoria'] ?? 'supercars'));
-$categoryName = $categoryMap[$categorySlug] ?? null;
+$brandSlug = strtolower(trim($_GET['brand'] ?? 'ferrari'));
+$brandName = $brandMap[$brandSlug] ?? null;
 
-if (!$categoryName) {
+if (!$brandName) {
     http_response_code(404);
-    $pageTitle = 'Categoria inválida | ApexMotors';
+    $pageTitle = 'Marca inválida | ApexMotors';
     $vehicles = [];
-    $errorMessage = 'Não encontramos essa categoria. Use uma categoria válida ou volte para a página inicial.';
+    $errorMessage = 'Não encontramos essa marca. Verifique o link ou volte para a página inicial.';
 } else {
-    $pageTitle = sprintf('%s Collection | ApexMotors', $categoryName);
-    $vehicles = buscarVeiculosPorCategoria($categoryName);
+    $pageTitle = sprintf('%s Collection | ApexMotors', $brandName);
+    $vehicles = buscarVeiculosPorMarca($brandName);
 }
 ?>
 <!DOCTYPE html>
@@ -58,28 +59,28 @@ if (!$categoryName) {
     </nav>
 
     <header class="about-hero" style="background-image: linear-gradient(rgba(11, 11, 11, 0.7), rgba(11, 11, 11, 0.95)), url('https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&w=1920&q=80');">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="category-subtitle">Categorias</span>
-            <h1 class="hero-title"><span><?= htmlspecialchars($categoryName ?? 'Categoria', ENT_QUOTES) ?></span><br>Collection</h1>
+            <span class="category-subtitle">Marca</span>
+            <h1 class="hero-title"><span><?= htmlspecialchars($brandName ?? 'Marca', ENT_QUOTES) ?></span> <br>Collection</h1>
         </div>
     </header>
 
     <main>
         <section class="category-section">
             <div class="section-header">
-                <h2 class="category-title"><?= htmlspecialchars($categoryName ? 'Modelos em Destaque' : 'Categoria não encontrada', ENT_QUOTES) ?></h2>
+                <h2 class="category-title"><?= htmlspecialchars($brandName ? 'Modelos em Destaque de ' . $brandName : 'Marca não encontrada', ENT_QUOTES) ?></h2>
             </div>
+
             <div class="centered-grid">
-                <?php if (!$categoryName): ?>
+                <?php if (!$brandName): ?>
                     <div style="color:#fff; padding:40px; text-align:center; width:100%;">
-                        <h3>Categoria inválida</h3>
+                        <h3>Marca inválida</h3>
                         <p><?= htmlspecialchars($errorMessage, ENT_QUOTES) ?></p>
                     </div>
                 <?php elseif (empty($vehicles)): ?>
                     <div style="color:#fff; padding:40px; text-align:center; width:100%;">
                         <h3>Nenhum veículo encontrado</h3>
-                        <p>Não há veículos cadastrados nesta categoria no banco de dados.</p>
+                        <p>Não há veículos cadastrados no banco de dados para esta marca.</p>
                     </div>
                 <?php else: ?>
                     <?php foreach ($vehicles as $carro): ?>
