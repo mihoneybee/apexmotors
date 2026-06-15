@@ -43,6 +43,8 @@ window.addEventListener('click', (event) => {
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-bar input');
     const catalog = document.getElementById('catalog');
+    
+    if (!searchInput) return;
 
     // Cria a mensagem de "Nada encontrado" globalmente se não existir
     let noResultsMsg = document.getElementById('global-no-results');
@@ -60,67 +62,66 @@ document.addEventListener('DOMContentLoaded', () => {
         catalog.appendChild(noResultsMsg);
     }
 
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            let totalVisibleCards = 0;
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        let totalVisibleCards = 0;
 
-            // Seleciona todas as seções (Categorias, Benefícios, Depoimentos, etc)
-            const allSections = document.querySelectorAll('.category-section');
+        const allSections = document.querySelectorAll('.category-section');
 
-            allSections.forEach(section => {
-                const cards = section.querySelectorAll('.card');
-                let visibleCardsInSection = 0;
+        allSections.forEach(section => {
+            // Pega todos os cards de carro dentro da seção atual
+            const cards = section.querySelectorAll('.card');
+            
+            // 1. Se a barra de pesquisa estiver vazia, restaura o layout original limpando o CSS inline
+            if (searchTerm === '') {
+                section.style.display = ''; 
+                cards.forEach(card => {
+                    card.style.display = '';
+                    card.style.opacity = '1';
+                });
+                return; // Pula para a próxima seção
+            }
 
-                // Se a seção tem cards de carros, aplicamos a lógica de filtro
-                if (cards.length > 0) {
-                    cards.forEach(card => {
-                        const titleElement = card.querySelector('h3');
-                        if (titleElement) {
-                            const carName = titleElement.textContent.toLowerCase();
-                            
-                            // Se o nome do carro inclui o que foi digitado
-                            if (carName.includes(searchTerm)) {
-                                card.style.display = 'block';
-                                setTimeout(() => {
-                                    card.style.opacity = '1';
-                                    card.style.transform = 'translateY(0)';
-                                }, 10);
-                                visibleCardsInSection++;
-                                totalVisibleCards++;
-                            } else {
-                                card.style.opacity = '0';
-                                card.style.display = 'none';
-                            }
+            // 2. Se o usuário digitou algo na busca
+            let visibleCardsInSection = 0;
+
+            if (cards.length > 0) {
+                // A seção tem carros, vamos aplicar o filtro
+                cards.forEach(card => {
+                    const titleElement = card.querySelector('h3');
+                    if (titleElement) {
+                        const carName = titleElement.textContent.toLowerCase();
+                        
+                        if (carName.includes(searchTerm)) {
+                            card.style.display = ''; // Mostra o card
+                            card.style.opacity = '1';
+                            visibleCardsInSection++;
+                            totalVisibleCards++;
+                        } else {
+                            card.style.display = 'none'; // Esconde o card
                         }
-                    });
-
-                    // Oculta a categoria inteira se nenhum carro bater com a pesquisa
-                    if (visibleCardsInSection === 0 && searchTerm !== '') {
-                        section.style.display = 'none';
-                    } else {
-                        section.style.display = 'block';
                     }
-                } else {
-                    // Para seções que não têm carros (como "Benefícios", "Depoimentos"),
-                    // nós as ocultamos enquanto o usuário estiver pesquisando algo para limpar a tela
-                    if (searchTerm !== '') {
-                        section.style.display = 'none';
-                    } else {
-                        section.style.display = 'block';
-                    }
-                }
-            });
+                });
 
-            // Exibe a mensagem global de "Nada encontrado" se a busca não bater com nada
-            if (totalVisibleCards === 0 && searchTerm !== '') {
-                if (noResultsMsg) noResultsMsg.style.display = 'block';
+                // Se nenhum carro desta seção bateu com a busca, esconde a seção inteira
+                section.style.display = visibleCardsInSection === 0 ? 'none' : '';
+                
             } else {
-                if (noResultsMsg) noResultsMsg.style.display = 'none';
+                // A seção NÃO tem carros (ex: categoria vazia, seção de depoimentos, etc)
+                // Esconde imediatamente enquanto o usuário estiver buscando
+                section.style.display = 'none';
             }
         });
-    }
+
+        // 3. Exibe ou oculta a mensagem global de "Nada encontrado"
+        if (searchTerm !== '' && totalVisibleCards === 0) {
+            if (noResultsMsg) noResultsMsg.style.display = 'block';
+        } else {
+            if (noResultsMsg) noResultsMsg.style.display = 'none';
+        }
+    });
 });
+
 /* ==========================================================
    4. ANIMAÇÕES AO ROLAR A PÁGINA (INTERSECTION OBSERVER)
    ========================================================== */
