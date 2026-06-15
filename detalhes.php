@@ -1,12 +1,14 @@
 <?php
-require_once __DIR__ . '/supabase.php';
+// Puxa a conexão do arquivo config.php
+require_once __DIR__ . '/config.php';
 
 $id = $_GET['id'] ?? null;
-$slug = $_GET['slug'] ?? null;
 $veiculo = null;
 
 if ($id !== null && ctype_digit((string)$id)) {
-    $veiculo = buscarVeiculoById($id);
+    $stmt = $pdo->prepare("SELECT * FROM $tabela WHERE id = :id");
+    $stmt->execute(['id' => intval($id)]);
+    $veiculo = $stmt->fetch();
 }
 
 if (!$veiculo && $slug !== null) {
