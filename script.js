@@ -42,68 +42,85 @@ window.addEventListener('click', (event) => {
    ========================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-bar input');
-    const carCards = document.querySelectorAll('.card');
-    const catalogGrid = document.querySelector('.grid');
+    const catalog = document.getElementById('catalog');
 
-    // 3.1 Criar mensagem de "Nenhum resultado" dinamicamente
-    let noResultsMsg = document.createElement('div');
-    noResultsMsg.id = 'no-results-feedback';
-    noResultsMsg.innerHTML = `
-        <div style="text-align: center; grid-column: 1 / -1; padding: 60px 20px;">
-            <h3 style="font-family: var(--font-head); color: var(--primary); font-size: 1.5rem; margin-bottom: 10px;">
-                NENHUM EXEMPLAR ENCONTRADO
-            </h3>
+    // Cria a mensagem de "Nada encontrado" globalmente se não existir
+    let noResultsMsg = document.getElementById('global-no-results');
+    if (!noResultsMsg && catalog) {
+        noResultsMsg = document.createElement('div');
+        noResultsMsg.id = 'global-no-results';
+        noResultsMsg.style.display = 'none';
+        noResultsMsg.style.textAlign = 'center';
+        noResultsMsg.style.padding = '60px 20px';
+        noResultsMsg.style.width = '100%';
+        noResultsMsg.innerHTML = `
+            <h3 style="color: var(--primary); font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 10px;">NENHUM VEÍCULO ENCONTRADO</h3>
             <p style="color: #888; font-weight: 300;">Tente buscar por outra marca ou modelo do nosso acervo.</p>
-        </div>
-    `;
-    noResultsMsg.style.display = 'none';
-    
-    if (catalogGrid) {
-        catalogGrid.appendChild(noResultsMsg);
+        `;
+        catalog.appendChild(noResultsMsg);
     }
 
-    // 3.2 Lógica de Filtro
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase().trim();
-            let hasResults = false;
+            let totalVisibleCards = 0;
 
-            carCards.forEach(card => {
-                // Captura o nome do carro dentro do h3 do card
-                const carName = card.querySelector('h3').textContent.toLowerCase();
-                
-                // Verifica se o termo pesquisado está contido no nome/marca
-                if (carName.includes(searchTerm)) {
-                    card.style.display = 'block'; // Mostra o card
-                    
-                    // Pequeno delay para disparar a animação de fade-in
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
-                    
-                    hasResults = true;
+            // Seleciona todas as seções (Categorias, Benefícios, Depoimentos, etc)
+            const allSections = document.querySelectorAll('.category-section');
+
+            allSections.forEach(section => {
+                const cards = section.querySelectorAll('.card');
+                let visibleCardsInSection = 0;
+
+                // Se a seção tem cards de carros, aplicamos a lógica de filtro
+                if (cards.length > 0) {
+                    cards.forEach(card => {
+                        const titleElement = card.querySelector('h3');
+                        if (titleElement) {
+                            const carName = titleElement.textContent.toLowerCase();
+                            
+                            // Se o nome do carro inclui o que foi digitado
+                            if (carName.includes(searchTerm)) {
+                                card.style.display = 'block';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 10);
+                                visibleCardsInSection++;
+                                totalVisibleCards++;
+                            } else {
+                                card.style.opacity = '0';
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+
+                    // Oculta a categoria inteira se nenhum carro bater com a pesquisa
+                    if (visibleCardsInSection === 0 && searchTerm !== '') {
+                        section.style.display = 'none';
+                    } else {
+                        section.style.display = 'block';
+                    }
                 } else {
-                    // Esconde o card com efeito visual
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300); // Tempo da transição CSS
+                    // Para seções que não têm carros (como "Benefícios", "Depoimentos"),
+                    // nós as ocultamos enquanto o usuário estiver pesquisando algo para limpar a tela
+                    if (searchTerm !== '') {
+                        section.style.display = 'none';
+                    } else {
+                        section.style.display = 'block';
+                    }
                 }
             });
 
-            // 3.3 Exibir/Ocultar feedback de "Nada encontrado"
-            if (!hasResults && searchTerm !== "") {
-                noResultsMsg.style.display = 'block';
-                noResultsMsg.style.opacity = '1';
+            // Exibe a mensagem global de "Nada encontrado" se a busca não bater com nada
+            if (totalVisibleCards === 0 && searchTerm !== '') {
+                if (noResultsMsg) noResultsMsg.style.display = 'block';
             } else {
-                noResultsMsg.style.display = 'none';
+                if (noResultsMsg) noResultsMsg.style.display = 'none';
             }
         });
     }
 });
-
 /* ==========================================================
    4. ANIMAÇÕES AO ROLAR A PÁGINA (INTERSECTION OBSERVER)
    ========================================================== */
