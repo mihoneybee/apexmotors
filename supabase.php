@@ -1,12 +1,19 @@
 <?php
 
-const SUPABASE_DB_HOST = 'db.ttnjltqowroupzgfvmxx.supabase.co';
-const SUPABASE_DB_PORT = 5432;
-const SUPABASE_DB_NAME = 'postgres';
-const SUPABASE_DB_USER = 'postgres';
-const SUPABASE_DB_PASSWORD = '6Dn?YdfY?H3YKC';
-const SUPABASE_CARS_TABLE = 'veiculos';
-const SUPABASE_GALLERY_TABLE = 'veiculos_galeria';
+// Load local config with sensitive credentials if present (do NOT commit it)
+if (file_exists(__DIR__ . '/config.local.php')) {
+    require __DIR__ . '/config.local.php';
+}
+
+// Fallback defaults (kept for compatibility). It's recommended to create
+// a `config.local.php` with your credentials and add it to .gitignore.
+if (!defined('SUPABASE_DB_HOST')) define('SUPABASE_DB_HOST', 'db.ttnjltqowroupzgfvmxx.supabase.co');
+if (!defined('SUPABASE_DB_PORT')) define('SUPABASE_DB_PORT', 5432);
+if (!defined('SUPABASE_DB_NAME')) define('SUPABASE_DB_NAME', 'ApexMotors');
+if (!defined('SUPABASE_DB_USER')) define('SUPABASE_DB_USER', 'mihoneybee');
+if (!defined('SUPABASE_DB_PASSWORD')) define('SUPABASE_DB_PASSWORD', '6Dn?YdfY?H3YKC.');
+if (!defined('SUPABASE_CARS_TABLE')) define('SUPABASE_CARS_TABLE', 'veiculos');
+if (!defined('SUPABASE_GALLERY_TABLE')) define('SUPABASE_GALLERY_TABLE', 'veiculos_galeria');
 
 function supabaseConnect()
 {

@@ -1,0 +1,19 @@
+# Basic .htaccess for ApexMotors on shared hosts (InfinityFree)
+Options -Indexes
+DirectoryIndex index.php index.html
+
+# Protect local config and environment files
+<FilesMatch "^(config\.local\.php|\.env|composer\.json|composer\.lock)$">
+    Require all denied
+</FilesMatch>
+
+# Disable access to .git directory
+RedirectMatch 403 /\.git
+
+# Rewrite to remove .php extension if desired (optional)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^([^\.]+)$ $1.php [L]
+    
+</IfModule>

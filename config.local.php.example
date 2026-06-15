@@ -1,0 +1,11 @@
+<?php
+// Exemplo de config.local.php — COPIE este arquivo para `config.local.php`
+// NÃO commit: `config.local.php` deve estar em .gitignore
+
+if (!defined('SUPABASE_DB_HOST')) define('SUPABASE_DB_HOST', 'seu-host.supabase.co');
+if (!defined('SUPABASE_DB_PORT')) define('SUPABASE_DB_PORT', 5432);
+if (!defined('SUPABASE_DB_NAME')) define('SUPABASE_DB_NAME', 'nome_do_banco');
+if (!defined('SUPABASE_DB_USER')) define('SUPABASE_DB_USER', 'usuario');
+if (!defined('SUPABASE_DB_PASSWORD')) define('SUPABASE_DB_PASSWORD', 'senha_super_secreta');
+if (!defined('SUPABASE_CARS_TABLE')) define('SUPABASE_CARS_TABLE', 'veiculos');
+if (!defined('SUPABASE_GALLERY_TABLE')) define('SUPABASE_GALLERY_TABLE', 'veiculos_galeria');
