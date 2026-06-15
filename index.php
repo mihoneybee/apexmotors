@@ -3,31 +3,56 @@
 require_once __DIR__ . '/config.php';
 
 try {
-    // Busca todos os veículos ativos do banco de dados (usa o $pdo criado no config.php)
+    // Busca todos os veículos ativos do banco de dados
     $stmt = $pdo->query("SELECT * FROM $tabela ORDER BY id DESC");
     $allVehicles = $stmt->fetchAll();
 } catch (PDOException $e) {
     $allVehicles = [];
 }
 
-// Auxiliar: Filtra a lista geral de veículos por uma categoria específica
+// 1. Filtra a lista geral de veículos por uma categoria específica
 function filtrarPorCategoria(array $veiculos, string $categoriaNome) {
     return array_filter($veiculos, function($carro) use ($categoriaNome) {
         return strtolower(trim($carro['categoria'] ?? '')) === strtolower(trim($categoriaNome));
     });
 }
 
-// Auxiliar: Obtém a primeira URL da lista de múltiplas imagens salvas
+// 2. Transforma as strings de preço em números reais para o sistema poder ordenar
+function extrairValorParaOrdenacao($precoStr) {
+    $precoLimpo = strtolower(trim((string)$precoStr));
+    
+    // Se não tiver preço ou for "Sob Consulta", consideramos o valor máximo para ficar no topo
+    if (empty($precoLimpo) || strpos($precoLimpo, 'consulta') !== false || strpos($precoLimpo, 'consulte') !== false) {
+        return 999999999999.0;
+    }
+    
+    // Remove moedas (R$, $), letras e pontos. Mantém apenas números e a vírgula dos centavos
+    $numeros = preg_replace('/[^0-9,]/', '', $precoLimpo);
+    $numeros = str_replace(',', '.', $numeros); // Troca vírgula por ponto para o PHP entender como decimal
+    
+    return (float) $numeros;
+}
+
+// 3. Ordena os veículos do mais caro para o mais barato
+function ordenarPorPrecoDesc(array $veiculos) {
+    usort($veiculos, function($a, $b) {
+        $precoA = extrairValorParaOrdenacao($a['preco'] ?? '');
+        $precoB = extrairValorParaOrdenacao($b['preco'] ?? '');
+        return $precoB <=> $precoA; // Operador Spaceship para ordem decrescente
+    });
+    return $veiculos;
+}
+
+// 4. Obtém a primeira URL da lista de múltiplas imagens salvas
 function obterPrimeiraImagem(?string $imagensUrls) {
     if (empty(trim($imagensUrls))) {
         return 'https://via.placeholder.com/600x400?text=Imagem+Indispon%C3%ADvel';
     }
-    // Divide o texto pelas quebras de linha e limpa os espaços vazios
     $linhas = explode("\n", str_replace("\r", "", $imagensUrls));
     return trim($linhas[0]);
 }
 
-// Geração dinâmica da lista de Marcas exclusivas presentes no banco de dados
+// Geração dinâmica da lista de Marcas exclusivas
 $marcasDisponiveis = [];
 if (!empty($allVehicles)) {
     $marcasDisponiveis = array_unique(array_filter(array_column($allVehicles, 'marca')));
@@ -44,7 +69,6 @@ if (!empty($allVehicles)) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -114,8 +138,9 @@ if (!empty($allVehicles)) {
     <main id="catalog" class="catalog">
         
         <?php
+        // Lista de categorias formatada para redirecionar corretamente para categoria.php
         $categoriasFiltro = [
-            'Supercars' => ['id' => 'Supercars', 'titulo' => 'Supercars', 'link' => '/supercars.php'],
+            'Supercars' => ['id' => 'Supercars', 'titulo' => 'Supercars', 'link' => '/categoria.php?category=supercars'],
             'Hypercars' => ['id' => 'Hypercars', 'titulo' => 'Hypercars', 'link' => '/categoria.php?category=hypercars'],
             'Luxury Cars' => ['id' => 'Luxury', 'titulo' => 'Luxury Cars', 'link' => '/categoria.php?category=luxury-cars'],
             'Luxury SUVs' => ['id' => 'SUVs', 'titulo' => 'Luxury SUVs', 'link' => '/categoria.php?category=luxury-suvs'],
@@ -126,6 +151,10 @@ if (!empty($allVehicles)) {
 
         foreach ($categoriasFiltro as $dbCat => $info): 
             $carrosDaCategoria = filtrarPorCategoria($allVehicles, $dbCat);
+            
+            // LÓGICA NOVA: Ordena do mais caro pro mais barato e corta para exibir apenas 3 carros
+            $carrosDaCategoria = ordenarPorPrecoDesc($carrosDaCategoria);
+            $carrosDaCategoria = array_slice($carrosDaCategoria, 0, 3);
         ?>
             <section id="<?= $info['id'] ?>" class="category-section">
                 <div class="category-header animate-on-scroll">
@@ -148,7 +177,11 @@ if (!empty($allVehicles)) {
                                 <img src="<?= htmlspecialchars($capaCarro, ENT_QUOTES) ?>" alt="<?= htmlspecialchars($carro['marca'] . ' ' . $carro['modelo'], ENT_QUOTES) ?>" class="card-img">
                                 <div class="card-info">
                                     <h3><?= htmlspecialchars($carro['marca'] . ' ' . $carro['modelo'], ENT_QUOTES) ?></h3>
-                                    <p class="price"><?= htmlspecialchars($carro['status'] ?? 'Consulte', ENT_QUOTES) ?></p>
+                                    
+                                    <p class="price">
+                                        <?= htmlspecialchars(!empty($carro['preco']) ? $carro['preco'] : ($carro['status'] ?? 'Consulte'), ENT_QUOTES) ?>
+                                    </p>
+                                    
                                     <a href="/detalhes.php?id=<?= urlencode($carro['id']) ?>" class="btn btn-outline" style="text-align: center; text-decoration: none;">Ver Detalhes</a>
                                 </div>
                             </div>
@@ -235,7 +268,8 @@ if (!empty($allVehicles)) {
                 <span class="subtitle">Visite a ApexMotors</span>
                 <h2>Nossa Localização</h2>
                 <p class="location-desc">Nosso showroom premium foi projetado para oferecer uma experiência exclusiva e imersiva...</p>
-                </div>
+                <a href="https://maps.google.com" target="_blank" class="btn-location">Traçar Rota</a>
+            </div>
             <div class="location-map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.968270528243!2d-46.67104712390824!3d-23.570222361864114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d7b420286b%3A0x1d47cebb68c005b6!2sAv.%20Europa%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1714088915858!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
