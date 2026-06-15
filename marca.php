@@ -146,10 +146,12 @@ function obterPrimeiraImagem(?string $imagensUrls) {
             </div>
         </section>
     </main>
-
     <footer>
         <a href="/index.php#home" class="logo">Apex<span>Motors</span></a>
         <p>© 2026 Apex Motors. A excelência automotiva reimaginada.</p>
     </footer>
+
+    <!-- Forma CORRETA de carregar o JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
