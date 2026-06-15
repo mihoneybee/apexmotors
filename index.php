@@ -6,6 +6,19 @@ try {
     // Busca todos os veículos ativos do banco de dados (usa o $pdo criado no config.php)
     $stmt = $pdo->query("SELECT * FROM $tabela ORDER BY id DESC");
     $allVehicles = $stmt->fetchAll();
+    // Converte os escapes unicode de volta para texto legível na listagem geral
+if ($allVehicles) {
+    foreach ($allVehicles as &$carro) {
+        foreach ($carro as $key => $value) {
+            if (is_string($value)) {
+                $carro[$key] = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/', function ($match) {
+                    return json_decode('"' . $match[0] . '"');
+                }, $value);
+            }
+        }
+    }
+    unset($carro); // Limpa a referência
+}
 } catch (PDOException $e) {
     $allVehicles = [];
 }

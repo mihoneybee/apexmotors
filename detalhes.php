@@ -22,7 +22,16 @@ elseif ($slug !== null) {
     $stmt->execute(['modelo' => "%$modeloBusca%"]);
     $veiculo = $stmt->fetch();
 }
-
+// Converte os escapes unicode (ex: \u00e9) de volta para texto legível (ex: é)
+if ($veiculo) {
+    foreach ($veiculo as $key => $value) {
+        if (is_string($value)) {
+            $veiculo[$key] = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/', function ($match) {
+                return json_decode('"' . $match[0] . '"');
+            }, $value);
+        }
+    }
+}
 // 3. Tratamento de Exibição
 if (!$veiculo) {
     http_response_code(404);
