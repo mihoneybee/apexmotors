@@ -6,24 +6,8 @@ if (empty($_SESSION['is_admin'])) {
     exit;
 }
 
-// -----------------------------------------------------------------------------
-// CONFIGURAÇÃO DE BANCO DE DADOS - INFINITYFREE (MYSQL)
-// Substitua pelas credenciais do seu painel de controle (cPanel do InfinityFree)
-// -----------------------------------------------------------------------------
-$dbHost = 'sql201.infinityfree.com'; // Ex: sql108.epizy.com
-$dbName = 'if0_42143309_apexmotors'; 
-$dbUser = 'if0_42143309'; 
-$dbPass = 'Dseven741516'; 
-$tabela = 'veiculos';
-
-try {
-    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-} catch (PDOException $e) {
-    die("Erro de conexão com o banco de dados: " . htmlspecialchars($e->getMessage()));
-}
+// Puxa a conexão do arquivo config.php
+require_once __DIR__ . '/config.php';
 
 $message = '';
 $error = '';
