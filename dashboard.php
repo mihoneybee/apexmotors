@@ -190,8 +190,12 @@ if (isset($_GET['edit']) && ctype_digit((string)$_GET['edit'])) {
                     </div>
                     
                     <div class="form-group full-width">
-                        <label for="imagens_urls">URLs da Galeria de Imagens (Cole uma URL por linha)</label>
-                        <textarea id="imagens_urls" name="imagens_urls" rows="4" placeholder="https://site.com/img1.jpg&#10;https://site.com/img2.jpg"><?= htmlspecialchars($editing['imagens_urls'] ?? '', ENT_QUOTES) ?></textarea>
+                        <label>URLs da Galeria de Imagens</label>
+                        <div id="images-container" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
+                            <!-- Imagens serão adicionadas aqui dinamicamente -->
+                        </div>
+                        <button type="button" class="btn btn-outline" id="add-image-btn" style="width: 100%; margin-bottom: 10px;">+ Adicionar Imagem</button>
+                        <textarea id="imagens_urls" name="imagens_urls" style="display: none;"></textarea>
                     </div>
 
                     <div class="form-group full-width">
@@ -259,5 +263,88 @@ if (isset($_GET['edit']) && ctype_digit((string)$_GET['edit'])) {
             </div>
         </section>
     </main>
+
+    <script>
+        // Gerenciamento dinâmico de imagens
+        const imagesContainer = document.getElementById('images-container');
+        const imagensUrlsField = document.getElementById('imagens_urls');
+        const addImageBtn = document.getElementById('add-image-btn');
+
+        // Carregar imagens existentes ao abrir
+        function loadExistingImages() {
+            const imagensTexto = '<?= htmlspecialchars($editing['imagens_urls'] ?? '', ENT_QUOTES) ?>';
+            if (imagensTexto.trim()) {
+                const urls = imagensTexto.split('\n').filter(url => url.trim());
+                urls.forEach(url => addImageField(url.trim()));
+            }
+            if (imagesContainer.children.length === 0) {
+                addImageField('');
+            }
+        }
+
+        // Adicionar campo de imagem
+        function addImageField(initialValue = '') {
+            const imageWrapper = document.createElement('div');
+            imageWrapper.style.cssText = 'display: flex; gap: 10px; align-items: flex-start;';
+            
+            const input = document.createElement('input');
+            input.type = 'url';
+            input.placeholder = 'https://exemplo.com/imagem.jpg';
+            input.value = initialValue;
+            input.style.cssText = 'flex: 1;';
+            input.className = 'image-url-input';
+            
+            const previewBtn = document.createElement('button');
+            previewBtn.type = 'button';
+            previewBtn.textContent = 'Preview';
+            previewBtn.className = 'btn btn-outline';
+            previewBtn.style.cssText = 'padding: 8px 12px; white-space: nowrap;';
+            previewBtn.onclick = (e) => {
+                e.preventDefault();
+                if (input.value) {
+                    window.open(input.value, '_blank');
+                }
+            };
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.textContent = 'Remover';
+            removeBtn.className = 'btn btn-outline';
+            removeBtn.style.cssText = 'padding: 8px 12px; background: rgba(255, 50, 50, 0.1); color: #ff3232; white-space: nowrap;';
+            removeBtn.onclick = (e) => {
+                e.preventDefault();
+                imageWrapper.remove();
+                updateImageTextarea();
+            };
+
+            imageWrapper.appendChild(input);
+            imageWrapper.appendChild(previewBtn);
+            imageWrapper.appendChild(removeBtn);
+            imagesContainer.appendChild(imageWrapper);
+
+            // Atualizar textarea ao digitar
+            input.addEventListener('change', updateImageTextarea);
+            input.addEventListener('blur', updateImageTextarea);
+        }
+
+        function updateImageTextarea() {
+            const urls = [];
+            document.querySelectorAll('.image-url-input').forEach(input => {
+                if (input.value.trim()) {
+                    urls.push(input.value.trim());
+                }
+            });
+            imagensUrlsField.value = urls.join('\n');
+        }
+
+        // Event listeners
+        addImageBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            addImageField();
+        });
+
+        // Inicializar ao carregar
+        document.addEventListener('DOMContentLoaded', loadExistingImages);
+    </script>
 </body>
 </html>

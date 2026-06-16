@@ -1,5 +1,5 @@
 <?php
-$dbHost = 'sql201.infinityfree.com'; // Ex: sql108.epizy.com
+$dbHost = 'sql201.infinityfree.com'; 
 $dbName = 'if0_42143309_apexmotors'; 
 $dbUser = 'if0_42143309'; 
 $dbPass = 'Dseven741516'; 

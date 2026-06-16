@@ -117,9 +117,9 @@ if (!empty($allVehicles)) {
                         <?php endif; ?>
                     </ul>
                 </li>
-                <li><a href="servicos.html">Serviços</a></li>
-                <li><a href="quemnossomos.html">Quem somos</a></li>
-                <li><a href="noticias.html">Blog</a></li>
+                <li><a href="servicos/servicos.html">Serviços</a></li>
+                <li><a href="servicos/quemnossomos.html">Quem somos</a></li>
+                <li><a href="servicos/noticias.html">Blog</a></li>
             </ul>
         </div>
         <div class="navbar-right">
