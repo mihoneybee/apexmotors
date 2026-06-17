@@ -1,3 +1,3 @@
 # apexmotors
 
-https://apexmotors.pages.dev
+https://apexmotors.fwh.is/
