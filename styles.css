@@ -2678,7 +2678,7 @@ body.no-scroll {
             align-items: flex-end;
             /* Fundo com imagem de hipercarro aerodinâmico */
             background: linear-gradient(to top, #0B0B0B 0%, rgba(11, 11, 11, 0.4) 50%, rgba(11, 11, 11, 0.1) 100%), 
-                        url('/imagens/Koenigsegg\ Sadair\'s\ Spear-upview.jpg') center/cover no-repeat;
+                        url('https://www.planetcarsz.com/assets/uploads/2021/07/KOENIGSEGG%20JESKO%20PRE-PRODUCAO%202021%2001.jpg') center/cover no-repeat;
             padding: 5vw;
             margin-top: 90px;
         }

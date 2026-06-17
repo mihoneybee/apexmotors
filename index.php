@@ -96,13 +96,13 @@ if (!empty($allVehicles)) {
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">Categorias<span class="arrow"></span></a>
                     <ul class="dropdown-content">
-                        <li><a href="#Supercars">Supercars</a></li>
-                        <li><a href="#Hypercars">Hypercars</a></li>
-                        <li><a href="#Luxury">Luxury Cars</a></li>
-                        <li><a href="#SUVs">Luxury SUVs</a></li>
-                        <li><a href="#GT">Grand Tourers (GT)</a></li>
-                        <li><a href="#Exclusive">Exclusive</a></li>
-                        <li><a href="#Limited">Limited Edition</a></li>
+                        <li><a href="/categoria.php?category=supercars">Supercars</a></li>
+                        <li><a href="/categoria.php?category=hypercars">Hypercars</a></li>
+                        <li><a href="/categoria.php?category=luxury-cars">Luxury Cars</a></li>
+                        <li><a href="/categoria.php?category=luxury-suvs">Luxury SUVs</a></li>
+                        <li><a href="/categoria.php?category=grand-tourers">Grand Tourers (GT)</a></li>
+                        <li><a href="/categoria.php?category=exclusive">Exclusive</a></li>
+                        <li><a href="/categoria.php?category=limited-edition">Limited Edition</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -117,9 +117,9 @@ if (!empty($allVehicles)) {
                         <?php endif; ?>
                     </ul>
                 </li>
-                <li><a href="servicos/servicos.html">Serviços</a></li>
-                <li><a href="servicos/quemnossomos.html">Quem somos</a></li>
-                <li><a href="servicos/noticias.html">Blog</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="quemnossomos.html">Quem somos</a></li>
+                <li><a href="noticias.html">Blog</a></li>
             </ul>
         </div>
         <div class="navbar-right">

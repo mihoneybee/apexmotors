@@ -80,13 +80,13 @@ function obterPrimeiraImagem(?string $imagensUrls) {
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">Categorias<span class="arrow"></span></a>
                     <ul class="dropdown-content">
-                        <li><a href="/index.php#Supercars">Supercars</a></li>
-                        <li><a href="/index.php#Hypercars">Hypercars</a></li>
-                        <li><a href="/index.php#Luxury">Luxury Cars</a></li>
-                        <li><a href="/index.php#SUVs">Luxury SUVs</a></li>
-                        <li><a href="/index.php#GT">Grand Tourers (GT)</a></li>
-                        <li><a href="/index.php#Exclusive">Exclusive</a></li>
-                        <li><a href="/index.php#Limited">Limited Edition</a></li>
+                        <li><a href="/categoria.php?category=supercars">Supercars</a></li>
+                        <li><a href="/categoria.php?category=hypercars">Hypercars</a></li>
+                        <li><a href="/categoria.php?category=luxury-cars">Luxury Cars</a></li>
+                        <li><a href="/categoria.php?category=luxury-suvs">Luxury SUVs</a></li>
+                        <li><a href="/categoria.php?category=grand-tourers">Grand Tourers (GT)</a></li>
+                        <li><a href="/categoria.php?category=exclusive">Exclusive</a></li>
+                        <li><a href="/categoria.php?category=limited-edition">Limited Edition</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
